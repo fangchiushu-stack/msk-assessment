@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>肌肉骨骼系統評估｜動畫教學練習</title>
+<link href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8f0;--card:#fff;--ink:#3b3355;--mute:#7a7196;--line:#f0e3f5;--teal:#7c5cff;--teal2:#efe9ff;--coral:#ff6b8a;--blue:#3d8bff;--green:#21b37a;--amber:#ff9f1c;--pink:#ffd6e3;--mint:#cdf5e4;--sky:#d6ecff;--sun:#fff1b8}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Huninn","Noto Sans TC",system-ui,sans-serif;color:var(--ink);line-height:1.65;
+ background:var(--bg) radial-gradient(#ffd9e6 1.2px,transparent 1.3px) 0 0/22px 22px}
+header{position:relative;overflow:hidden;background:linear-gradient(120deg,#ff9ec0 0%,#b69cff 50%,#7fd4ff 100%);color:#fff;padding:22px 24px 26px;display:flex;align-items:center;gap:16px}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:16px;background:radial-gradient(circle at 12px -2px,transparent 12px,var(--bg) 13px) 0 0/24px 16px}
+header h1{margin:0;font-size:1.55rem;font-weight:700;letter-spacing:.5px;text-shadow:0 2px 0 rgba(90,50,160,.25)}
+header p{margin:2px 0 0;font-size:.92rem;opacity:.95}
+.mascot{width:78px;height:78px;flex:none;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-6px) rotate(6deg)}}
+nav{display:flex;gap:8px;flex-wrap:wrap;padding:12px 24px;background:rgba(255,248,240,.92);backdrop-filter:blur(6px);position:sticky;top:0;z-index:5}
+nav a{padding:7px 14px;border-radius:999px;text-decoration:none;color:var(--ink);font-size:.92rem;background:#fff;border:2px solid var(--line);box-shadow:0 3px 0 var(--line);transition:transform .15s}
+nav a:nth-child(5n+1){border-color:#ffc2d4;box-shadow:0 3px 0 #ffc2d4}nav a:nth-child(5n+2){border-color:#c9b8ff;box-shadow:0 3px 0 #c9b8ff}nav a:nth-child(5n+3){border-color:#9fe3c6;box-shadow:0 3px 0 #9fe3c6}nav a:nth-child(5n+4){border-color:#ffd88a;box-shadow:0 3px 0 #ffd88a}nav a:nth-child(5n){border-color:#a9d8ff;box-shadow:0 3px 0 #a9d8ff}
+nav a:hover{transform:translateY(-2px) rotate(-1deg)}
+nav a.on{background:var(--teal);color:#fff;border-color:var(--teal);box-shadow:0 3px 0 #5a3fd6}
+main{max-width:1180px;margin:0 auto;padding:22px 20px 40px}
+section{display:none}
+section.on{display:block;animation:pop .4s cubic-bezier(.3,1.5,.6,1)}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+h2{font-size:1.4rem;margin:0 0 4px}
+h3{color:var(--teal)}
+.sub{color:var(--mute);margin:0 0 14px;font-size:.94rem}
+.grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}header h1{font-size:1.25rem}.mascot{width:58px;height:58px}}
+.card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 6px 0 #f3e6f7}
+.stage svg{width:100%;height:auto;display:block;background:linear-gradient(#fffdf7,#fff6fb);border-radius:16px}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.pill{border:2px solid var(--line);background:#fff;border-radius:999px;padding:6px 13px;font:inherit;font-size:.9rem;cursor:pointer;color:var(--ink);transition:transform .15s}
+.pill:hover{transform:scale(1.06)}
+.pill.on{background:var(--teal2);border-color:var(--teal);color:var(--teal);font-weight:700}
+.btn{background:var(--coral);color:#fff;border:0;border-radius:999px;padding:9px 18px;font:inherit;font-size:.95rem;cursor:pointer;box-shadow:0 4px 0 #e04a6c;transition:transform .1s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(2px);box-shadow:0 1px 0 #e04a6c}
+.btn.ghost{background:#fff;color:var(--teal);border:2px solid var(--teal);box-shadow:0 4px 0 var(--teal2)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.big{font-size:2.2rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--blue)}
+.tag{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:999px;background:var(--sun);color:#a86400;font-weight:700;vertical-align:middle}
+.tag.c{background:var(--pink);color:#d6335b}
+.say{background:#fff7e0;border:2px dashed #ffc85c;padding:10px 14px;border-radius:16px;font-size:.93rem;margin-top:10px;position:relative}
+.say b{color:#e08600}
+.say::before{content:"💬";position:absolute;top:-14px;left:12px;font-size:1.1rem}
+ol.steps,ul.steps{padding-left:0;list-style:none;margin:0}
+.steps li{padding:9px 12px;border:2px solid var(--line);border-radius:16px;margin-bottom:7px;cursor:pointer;font-size:.93rem;transition:.2s;background:#fff}
+.steps li:hover{transform:translateX(4px)}
+.steps li.on{border-color:var(--teal);background:var(--teal2)}
+.steps li .n{display:inline-block;width:24px;height:24px;border-radius:50%;background:var(--pink);color:#d6335b;text-align:center;font-size:.8rem;line-height:24px;margin-right:6px;font-weight:700}
+.steps li.on .n{background:var(--teal);color:#fff;animation:wig .5s}
+@keyframes wig{30%{transform:rotate(-15deg) scale(1.2)}60%{transform:rotate(12deg)}}
+.steps li small{display:block;color:var(--mute);margin-left:30px}
+input[type=range]{width:100%;accent-color:var(--coral)}
+.check label{display:flex;gap:8px;align-items:flex-start;padding:9px 6px;border-bottom:2px dotted var(--line);font-size:.95rem;cursor:pointer}
+.check input{margin-top:6px;accent-color:var(--coral);transform:scale(1.25)}
+.pts{margin-left:auto;color:var(--coral);font-weight:700;white-space:nowrap}
+.cardflip{width:150px;height:200px;perspective:800px;cursor:pointer;margin:8px auto}
+.cardflip .in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.3,1.4,.6,1);transform-style:preserve-3d}
+.cardflip.f .in{transform:rotateY(180deg)}
+.cardflip .fa,.cardflip .ba{position:absolute;inset:0;border-radius:20px;display:flex;align-items:center;justify-content:center;backface-visibility:hidden;text-align:center;padding:12px}
+.cardflip .fa{background:linear-gradient(135deg,#ff9ec0,#b69cff);color:#fff;font-size:4rem;font-weight:700;box-shadow:0 6px 0 #d7c6ff;text-shadow:0 3px 0 rgba(0,0,0,.12)}
+.cardflip .ba{background:#fff;border:3px solid #b69cff;transform:rotateY(180deg);font-size:.95rem}
+.q{margin-bottom:16px;padding:12px;border-radius:16px;background:#fffafc;border:2px solid var(--line)}
+.q .opt{display:block;width:100%;text-align:left;margin:5px 0;padding:8px 12px;border:2px solid var(--line);border-radius:12px;background:#fff;font:inherit;font-size:.93rem;cursor:pointer;transition:transform .12s}
+.q .opt:hover{transform:translateX(4px)}
+.q .opt.ok{background:var(--mint);border-color:var(--green)}
+.q .opt.ok::after{content:" 🎉"}
+.q .opt.no{background:var(--pink);border-color:var(--coral);animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.q .exp{font-size:.88rem;color:var(--mute);display:none;margin-top:4px}
+.legend{font-size:.84rem;color:var(--mute);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin:0 4px 0 10px}
+.confetti{position:fixed;top:-12px;width:10px;height:14px;border-radius:3px;z-index:99;pointer-events:none;animation:fall 1.6s ease-in forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.6}}
+footer{text-align:center;color:var(--mute);font-size:.85rem;padding:0 0 28px}
+.credit{margin:12px auto 0;display:block;width:fit-content;padding:10px 22px;border-radius:999px;background:#fff;border:2px solid var(--line);color:var(--ink);font-size:.92rem;line-height:1.6}
+.credit a{color:var(--teal);text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+  <svg class="mascot" viewBox="0 0 100 100" aria-hidden="true"><g transform="rotate(-20 50 50)"><rect x="22" y="40" width="56" height="20" rx="10" fill="#fff"/><circle cx="22" cy="38" r="12" fill="#fff"/><circle cx="22" cy="62" r="12" fill="#fff"/><circle cx="78" cy="38" r="12" fill="#fff"/><circle cx="78" cy="62" r="12" fill="#fff"/></g><circle cx="42" cy="48" r="3.5" fill="#3b3355"/><circle cx="58" cy="44" r="3.5" fill="#3b3355"/><path d="M44 56 Q51 62 58 53" stroke="#3b3355" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="37" cy="56" rx="4.5" ry="3" fill="#ff9ec0"/><ellipse cx="65" cy="51" rx="4.5" ry="3" fill="#ff9ec0"/></svg>
+  <div><h1>肌肉骨骼系統評估｜動畫教學練習</h1>
+  <p>依「健康檢查與評估技術考評分標準—肌肉骨骼系統(115)」製作 · 護理系二年級技術練習用 ✨ 一起把骨頭肌肉摸透透！</p></div>
+</header>
+<nav id="nav">
+  <a href="#prep">🧼 準備</a>
+  <a href="#muscle">💪 肌肉視觸診</a>
+  <a href="#measure">📏 肌肉測量</a>
+  <a href="#strength">🏋️ 肌力測驗</a>
+  <a href="#joint">🦴 關節視觸診</a>
+  <a href="#spine">🐛 脊柱</a>
+  <a href="#shoulder">🙆 肩關節ROM</a>
+  <a href="#hip">🦵 髖關節ROM</a>
+  <a href="#quiz">🎯 自我測驗</a>
+</nav>
+<main>
+
+<!-- 0 PREP -->
+<section id="prep">
+  <h2>🧼 檢查前準備與注意事項</h2>
+  <p class="sub">考試時以下項目未做到須<b>倒扣</b>。練習時逐項勾選，養成習慣。</p>
+  <div class="grid">
+    <div class="card check" id="prepList"></div>
+    <div class="card">
+      <h3 style="margin-top:0">共通原則</h3>
+      <p><span class="tag">備物</span> 布尺、量角器 <span class="pts">(1)</span></p>
+      <p><span class="tag c">兩側</span> 所有檢查均需測試<b>同一部位的兩側</b>，未測兩側不予計分。</p>
+      <p><span class="tag c">口述</span> 需<b>一邊做一邊口述</b>評估項目與結果，名稱需相符，不符者不予計分。</p>
+      <p><span class="tag">流程</span> 視診做完再一起回答結果；觸診做完再一起回答結果。</p>
+      <h3>🔄 關節活動度（ROM）原則</h3>
+      <ol style="margin:0 0 6px;padding-left:22px">
+        <li>請個案<b>自行做動作</b>（主動關節活動，AROM）。</li>
+        <li>若活動受限，再<b>支托肢體輕柔協助</b>移動（被動關節活動，PROM）；考試時<b>口述即可</b>。</li>
+        <li>出現<b>疼痛或阻力即停止</b>，不可強迫。</li>
+        <li>以<b>目測</b>評估，量角器不列入計分。</li>
+      </ol>
+      <div class="say"><b>開場口述範例：</b>「您好，我是護理系學生○○○，等一下要幫您做肌肉骨骼系統的評估，過程中如果有任何不舒服請隨時告訴我。我先幫您把門簾拉上。」</div>
+      <div class="row"><span id="prepScore" class="tag" style="font-size:.95rem">已完成 0 / 0</span><button class="btn ghost" onclick="resetPrep()">重設</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 1 MUSCLE -->
+<section id="muscle">
+  <h2>💪 四肢肌肉群：視診與觸診 <span class="tag">22 分</span></h2>
+  <p class="sub">說出並指出四肢肌肉：上肢可選<b>肱二頭肌／肱三頭肌</b>、下肢可選<b>股四頭肌／腓腸肌</b>。先選肌肉，再點右側步驟觀看動畫。</p>
+  <div class="grid">
+    <div class="card stage"><div class="pills" id="pMus"></div><svg id="svMuscle" viewBox="0 0 480 380"></svg></div>
+    <div class="card"><ol class="steps" id="stMuscle"></ol>
+      <div class="say" id="sayMuscle"></div></div>
+  </div>
+</section>
+
+<!-- 2 MEASURE -->
+<section id="measure">
+  <h2>📏 四肢肌肉群：測量 <span class="tag">12 分</span></h2>
+  <p class="sub">說出測量位置、正確測量、比較兩側並評估結果。</p>
+  <div class="grid">
+    <div class="card stage"><svg id="svMeasure" viewBox="0 0 480 440"></svg></div>
+    <div class="card">
+      <div class="pills" id="pMeasure"></div>
+      <div id="infoMeasure"></div>
+      <div class="row"><button class="btn" onclick="playMeasure()">▶ 播放測量動畫</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 STRENGTH -->
+<section id="strength">
+  <h2>🏋️ 肌力測驗 <span class="tag">9 分</span></h2>
+  <p class="sub">股四頭肌、肱二頭肌、肱三頭肌各 3 分：說出並指示操作方式(1)、說出肌力強度及意義(1)、比較兩側(1)。</p>
+  <div class="grid">
+    <div class="card stage"><svg id="svStr" viewBox="0 0 480 360"></svg>
+      <div class="legend"><i style="background:#ff6b8a"></i>受檢者用力方向 <i style="background:#3d8bff"></i>檢查者施力方向 <i style="background:#21b37a"></i>固定點</div></div>
+    <div class="card">
+      <div class="pills" id="pStr"></div>
+      <div id="infoStr"></div>
+    </div>
+  </div>
+  <div class="grid" style="margin-top:18px">
+    <div class="card">
+      <h3 style="margin-top:0">肌力分級 0–5：點選觀看</h3>
+      <div class="pills" id="pGrade"></div>
+      <div id="gradeTxt" class="say"></div>
+    </div>
+    <div class="card" style="text-align:center">
+      <h3 style="margin-top:0">考試模擬：抽數字牌</h3>
+      <p class="sub" style="margin:0">抽到哪張，就說出該數值的肌力意義。先自己說，再點牌翻面核對。</p>
+      <div class="cardflip" id="flip" onclick="this.classList.toggle('f')"><div class="in"><div class="fa" id="flipN">?</div><div class="ba" id="flipB"></div></div></div>
+      <button class="btn" onclick="drawCard()">🎴 抽一張</button>
+    </div>
+  </div>
+</section>
+
+<!-- 4 JOINT -->
+<section id="joint">
+  <h2>🦴 關節視診與觸診 <span class="tag">顳下頷 7 分 · 四肢關節 14 分</span></h2>
+  <p class="sub">四肢關節：上肢可選<b>腕關節／肘關節</b>、下肢可選<b>膝關節／踝關節</b>，說出關節名稱並比較兩側。</p>
+  <div class="grid">
+    <div class="card stage"><svg id="svJoint" viewBox="0 0 480 380"></svg></div>
+    <div class="card">
+      <div class="pills" id="pJoint"></div>
+      <ol class="steps" id="stJoint"></ol>
+      <div class="say" id="sayJoint"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 SPINE -->
+<section id="spine">
+  <h2>🐛 脊柱 <span class="tag">7 分</span></h2>
+  <p class="sub">指示病人直立，說出四條假想線與三個脊柱弧線，比較兩側等高，評估是否脊柱側彎。</p>
+  <div class="grid">
+    <div class="card stage"><svg id="svSpine" viewBox="0 0 480 400"></svg></div>
+    <div class="card"><ol class="steps" id="stSpine"></ol><div class="say" id="saySpine"></div></div>
+  </div>
+</section>
+
+<!-- 6 SHOULDER -->
+<section id="shoulder">
+  <h2>🙆 肩部關節全關節運動（二側） <span class="tag">16 分</span></h2>
+  <p class="sub">身體直立、水平並維持中線；每項說出名稱、正確操作、評估結果。以參照姿勢<b>目測</b>判斷正常範圍（WNL）或活動受限（Limited），並說出兩側是否對稱、有無疼痛。</p>
+  <div class="grid">
+    <div class="card stage"><svg id="svSh" viewBox="0 0 480 400"></svg>
+      <div class="legend"><i style="background:rgba(33,179,122,.35)"></i>正常最大活動角度範圍 <i style="background:#3d8bff"></i>目前角度</div></div>
+    <div class="card" id="cSh"></div>
+  </div>
+</section>
+
+<!-- 7 HIP -->
+<section id="hip">
+  <h2>🦵 髖部關節全關節運動（二側） <span class="tag">12 分</span></h2>
+  <p class="sub">髖關節保持貼著床面，雙腳可微微打開與肩同寬。以參照姿勢<b>目測</b>判斷正常範圍（WNL）或活動受限（Limited），並說出兩側是否對稱、有無疼痛。</p>
+  <div class="grid">
+    <div class="card stage"><svg id="svHip" viewBox="0 0 480 400"></svg>
+      <div class="legend"><i style="background:rgba(33,179,122,.35)"></i>正常最大活動角度範圍 <i style="background:#3d8bff"></i>目前角度</div></div>
+    <div class="card" id="cHip"></div>
+  </div>
+</section>
+
+<!-- 8 QUIZ -->
+<section id="quiz">
+  <h2>🎯 自我測驗</h2>
+  <p class="sub">考前快速檢核重點數值與位置。</p>
+  <div class="card" id="quizBox"></div>
+  <div class="row"><span class="tag" id="quizScore"></span><button class="btn ghost" onclick="buildQuiz()">重新作答</button></div>
+</section>
+
+</main>
+<footer>🦴 加油！熟能生巧，考試一定沒問題 💪<div class="credit">國立成功大學護理學系 方楸淑 助理教授<br><a href="mailto:fang.chiou16@gs.ncku.edu.tw">fang.chiou16@gs.ncku.edu.tw</a></div></footer>
+<script>
+const R=Math.PI/180,S=t=>Math.sin(t*R),C=t=>Math.cos(t*R);
+const $=id=>document.getElementById(id);
+const BODY='fill="#ffe6da" stroke="#d99a85" stroke-width="2.2"';
+function txt(x,y,s,o=''){return `<text x="${x}" y="${y}" font-size="13" fill="#3b3355" ${o}>${s}</text>`}
+function headF(x,y,r){return `<circle cx="${x}" cy="${y}" r="${r}" ${BODY}/><path d="M${x-r-1} ${y+2} C${x-r-2} ${y-r*1.45} ${x+r+2} ${y-r*1.45} ${x+r+1} ${y+2} C${x+r*.7} ${y-r*.5} ${x-r*.7} ${y-r*.5} ${x-r-1} ${y+2} Z" fill="#8a6152"/><ellipse cx="${x-r*.36}" cy="${y+r*.08}" rx="${r*.1}" ry="${r*.14}" fill="#3b3355"/><ellipse cx="${x+r*.36}" cy="${y+r*.08}" rx="${r*.1}" ry="${r*.14}" fill="#3b3355"/><ellipse cx="${x-r*.58}" cy="${y+r*.38}" rx="${r*.17}" ry="${r*.1}" fill="#ffb3c4" opacity=".8"/><ellipse cx="${x+r*.58}" cy="${y+r*.38}" rx="${r*.17}" ry="${r*.1}" fill="#ffb3c4" opacity=".8"/><path d="M${x-r*.18} ${y+r*.4} Q${x} ${y+r*.56} ${x+r*.18} ${y+r*.4}" fill="none" stroke="#c9644b" stroke-width="2" stroke-linecap="round"/>`}
+function headS(x,y,r,rot=0){return `<g transform="rotate(${rot} ${x} ${y})"><circle cx="${x}" cy="${y}" r="${r}" ${BODY}/><path d="M${x+r*.55} ${y-r*.84} C${x-r*.2} ${y-r*1.3} ${x-r*1.2} ${y-r*.7} ${x-r*.96} ${y+r*.35} Q${x-r*.62} ${y+r*.25} ${x-r*.42} ${y-r*.12} Q${x+r*.05} ${y-r*.5} ${x+r*.55} ${y-r*.84} Z" fill="#8a6152"/><ellipse cx="${x-r*.12}" cy="${y+r*.12}" rx="${r*.17}" ry="${r*.25}" ${BODY}/><ellipse cx="${x+r*.52}" cy="${y-r*.06}" rx="${r*.1}" ry="${r*.15}" fill="#3b3355"/><ellipse cx="${x+r*.58}" cy="${y+r*.38}" rx="${r*.18}" ry="${r*.1}" fill="#ffb3c4" opacity=".8"/></g>`}
+let raf={};
+function stopRaf(k){if(raf[k])cancelAnimationFrame(raf[k]);raf[k]=null}
+function anim(k,dur,fn,done){stopRaf(k);const t0=performance.now();const step=n=>{let p=Math.min(1,(n-t0)/dur);fn(p);if(p<1)raf[k]=requestAnimationFrame(step);else{raf[k]=null;done&&done()}};raf[k]=requestAnimationFrame(step)}
+const ease=p=>p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+
+/* ---------- ROUTING ---------- */
+const pages=['prep','muscle','measure','strength','joint','spine','shoulder','hip','quiz'];
+function route(){let h=location.hash.slice(1);if(!pages.includes(h))h='prep';
+ document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===h));
+ document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+h));}
+window.addEventListener('hashchange',route);
+
+/* ---------- 0 PREP ---------- */
+const prepItems=[['檢查前洗手',2],['檢查後洗手',2],['每換個案檢查時洗手',2],['指甲不可過長（以未看到白色處為準）',2],['頭髮不可觸及個案，過長需紮起並梳整齊',2],['注意個案環境的隱密性（拉床簾）',2],['適當保持個案身體隱私（覆蓋非檢查部位）',2],['主動與個案互動',2],['隨時注意個案之反應',2],['注意並維護個案之安全',2],['備物：布尺、量角器',1]];
+function buildPrep(){$('prepList').innerHTML='<h3 style="margin-top:0">考前自我檢核</h3>'+prepItems.map((p,i)=>`<label><input type="checkbox" onchange="prepCount()" id="pp${i}"> <span>${p[0]}</span><span class="pts">${i<10?'倒扣 '+p[1]:'+'+p[1]}</span></label>`).join('');prepCount()}
+function prepCount(){let n=prepItems.filter((p,i)=>$('pp'+i).checked).length;$('prepScore').textContent=`已完成 ${n} / ${prepItems.length}`+(n===prepItems.length?' 🎉 準備完成！':'');if(n===prepItems.length&&window._pc!==n)confetti(60);window._pc=n}
+function resetPrep(){prepItems.forEach((p,i)=>$('pp'+i).checked=false);prepCount()}
+
+/* ---------- 1 MUSCLE ---------- */
+const mSteps=[
+ {t:'說出並指出肌肉',d:'',a:'point',say:''},
+ {t:'視診①外觀',d:'有無發紅、腫脹（肌肉在四肢和軀幹較突出但應對稱）',a:'eye',say:'視診整條肌肉：「外觀無發紅、腫脹。」'},
+ {t:'視診②外形',d:'有無畸形、肌肉萎縮',a:'eye',say:'「外形無畸形、無肌肉萎縮。」'},
+ {t:'視診③對稱性',d:'比較兩側大小（慣用手肌肉可能比較大）',a:'both',say:'「兩側大小對稱，慣用側稍大屬正常。」'},
+ {t:'視診④收縮情形',d:'上肢：請病人雙手握拳用力，評估收縮情形；下肢不需用力。觀察有無不自主活動（收縮時可見肌肉繃緊，放鬆時消失）',a:'contract',say:'「請您雙手握拳、用力……再放鬆。」→「收縮時肌肉繃緊、放鬆時消失，無不自主活動。」→ 全部視診完再一起回答結果'},
+ {t:'觸診①大小',d:'萎縮、肥大；到肌腱處肌肉會變細',a:'palp',say:'觸診整條肌肉：「大小正常，往肌腱處漸細。」'},
+ {t:'觸診②溫度',d:'有無發熱（以手背感覺）',a:'palp',say:'「溫度無發熱。」'},
+ {t:'觸診③感覺',d:'有無壓痛',a:'palp',say:'「請問壓這裡會痛嗎？」→「無壓痛。」'},
+ {t:'觸診④肌肉張力',d:'有無痙攣、變硬（正常為平滑結實）',a:'palp',say:'「肌肉張力平滑結實，無痙攣變硬。」'},
+ {t:'觸診⑤結節',d:'有無腫塊',a:'palp',say:'「無結節、腫塊。」'},
+ {t:'比較兩側',d:'左右同一肌肉都要做(2)',a:'both',say:'「兩側比較：對稱、無異常。」→ 全部觸診完再一起回答結果'}
+];
+let mU='bic',mL='quad',mI=0;
+const MN={bic:'肱二頭肌',tri:'肱三頭肌',quad:'股四頭肌',gas:'腓腸肌'};
+function drawMuscleBase(){
+ const up=mU==='bic'?`${txt(70,28,'上肢（右臂，前面觀）','font-weight="700"')}
+ <path d="M80 50 Q60 60 62 110 L70 250 Q72 270 95 270 L120 270 Q140 268 138 250 L148 110 Q150 58 128 50Z" ${BODY}/>
+ <rect x="74" y="270" width="60" height="70" rx="20" ${BODY}/>
+ <path id="bic" d="M85 85 Q66 150 92 230 Q104 240 116 230 Q138 150 122 85 Q104 72 85 85Z" fill="#f3b3a2" stroke="#c9644b" stroke-width="1.5"/>
+ ${txt(150,160,'肱二頭肌','fill="#c9644b" font-weight="700"')}`
+ :`${txt(70,28,'上肢（右臂，後面觀）','font-weight="700"')}
+ <path d="M80 50 Q60 60 62 110 L70 250 Q72 270 95 270 L120 270 Q140 268 138 250 L148 110 Q150 58 128 50Z" ${BODY}/>
+ <rect x="74" y="270" width="60" height="70" rx="20" ${BODY}/>
+ <path id="bic" d="M82 70 Q62 130 80 200 Q92 240 106 248 Q120 240 130 200 Q146 130 126 70 Q104 58 82 70Z" fill="#f3b3a2" stroke="#c9644b" stroke-width="1.5"/>
+ <path d="M104 70 L104 200" stroke="#c9644b" stroke-width="1.2" stroke-dasharray="3 3"/>
+ <circle cx="104" cy="268" r="8" fill="#fff" stroke="#d99a85"/>${txt(116,290,'鷹嘴突','font-size="11" fill="#7a7196"')}
+ ${txt(150,160,'肱三頭肌','fill="#c9644b" font-weight="700"')}`;
+ const lo=mL==='quad'?`${txt(300,28,'下肢（右大腿，前面觀）','font-weight="700"')}
+ <path d="M300 45 Q275 60 280 140 L290 300 Q292 330 320 330 L352 330 Q378 330 378 300 L390 140 Q392 55 366 45Z" ${BODY}/>
+ <ellipse cx="334" cy="318" rx="20" ry="16" fill="#fff" stroke="#d99a85"/>${txt(358,345,'髕骨','font-size="11" fill="#7a7196"')}
+ <path id="quad" d="M300 70 Q285 180 310 295 Q334 310 358 295 Q384 180 368 70 Q334 55 300 70Z" fill="#f3b3a2" stroke="#c9644b" stroke-width="1.5"/>
+ ${txt(395,170,'股四頭肌','fill="#c9644b" font-weight="700"')}`
+ :`${txt(300,28,'下肢（右小腿，後面觀）','font-weight="700"')}
+ <path d="M298 40 Q276 70 282 150 Q296 250 316 318 L352 318 Q372 250 386 150 Q392 70 370 40Z" ${BODY}/>
+ <ellipse cx="334" cy="332" rx="26" ry="16" ${BODY}/>${txt(364,356,'足跟','font-size="11" fill="#7a7196"')}
+ <path id="quad" d="M300 60 Q284 130 306 205 Q322 228 334 230 Q346 228 362 205 Q384 130 368 60 Q334 48 300 60Z" fill="#f3b3a2" stroke="#c9644b" stroke-width="1.5"/>
+ <path d="M334 62 L334 225" stroke="#c9644b" stroke-width="1.2" stroke-dasharray="3 3"/>
+ <path d="M328 228 L326 318 L342 318 L340 228" fill="#fbe3d9" stroke="#c9644b" stroke-width="1"/>${txt(350,290,'跟腱','font-size="11" fill="#c9644b"')}
+ ${txt(395,150,'腓腸肌','fill="#c9644b" font-weight="700"')}`;
+ return up+lo+`
+ <g id="mIcon" opacity="0"><circle r="16" fill="#fff" stroke="#7c5cff" stroke-width="2"/><text id="mIconT" text-anchor="middle" y="6" font-size="17">👁</text></g>
+ <g id="mIcon2" opacity="0"><circle r="16" fill="#fff" stroke="#7c5cff" stroke-width="2"/><text id="mIconT2" text-anchor="middle" y="6" font-size="17">✋</text></g>
+ <g id="mNote" opacity="0"><rect x="282" y="${mL==='quad'?170:240}" width="104" height="28" rx="6" fill="#fff" stroke="#9aa8b1"/><text x="334" y="${mL==='quad'?189:259}" text-anchor="middle" font-size="13" fill="#7a7196" font-weight="700">下肢不需用力</text></g>
+ <text id="mCap" x="240" y="372" text-anchor="middle" font-size="14" fill="#7c5cff" font-weight="700"></text>`}
+function setMus(u,l){if(u)mU=u;if(l)mL=l;buildMuscle(mI)}
+function buildMuscle(start=0){
+ mSteps[0].d=`上肢可選肱二頭肌／肱三頭肌(1)；下肢可選股四頭肌／腓腸肌(1)。目前：${MN[mU]}、${MN[mL]}`;
+ mSteps[0].say=`「這是上肢的${MN[mU]}，這是下肢的${MN[mL]}，我會檢查兩側。」`;
+ $('pMus').innerHTML=['bic','tri'].map(k=>`<button class="pill${mU===k?' on':''}" onclick="setMus('${k}')">上肢：${MN[k]}</button>`).join('')+['quad','gas'].map(k=>`<button class="pill${mL===k?' on':''}" onclick="setMus(null,'${k}')">下肢：${MN[k]}</button>`).join('');
+ $('svMuscle').innerHTML=drawMuscleBase();
+ $('stMuscle').innerHTML=mSteps.map((s,i)=>`<li onclick="mStep(${i})"><span class="n">${i+1}</span>${s.t}<small>${s.d}</small></li>`).join('');
+ mStep(start)}
+function mStep(i){mI=i;
+ const s=mSteps[i];[...$('stMuscle').children].forEach((li,j)=>li.classList.toggle('on',j===i));
+ $('sayMuscle').innerHTML='<b>口述：</b>'+s.say;
+ const ic=$('mIcon'),ic2=$('mIcon2'),bic=$('bic'),quad=$('quad');$('mCap').textContent=s.t;
+ stopRaf('m');$('mNote').setAttribute('opacity',0);ic.setAttribute('opacity',0);ic2.setAttribute('opacity',0);bic.setAttribute('fill','#f3b3a2');quad.setAttribute('fill','#f3b3a2');
+ bic.style.transform='';bic.style.transformOrigin='104px 160px';bic.style.transition='transform .35s';
+ if(s.a==='point'){let on=0;anim('m',2400,p=>{on=Math.floor(p*8)%2;bic.setAttribute('fill',on?'#ff6b8a':'#f3b3a2');quad.setAttribute('fill',!on?'#ff6b8a':'#f3b3a2')})}
+ if(s.a==='eye'||s.a==='palp'){const sym=s.a==='eye'?'👁':(i===6?'🌡':'✋');$('mIconT').textContent=sym;$('mIconT2').textContent=sym;ic.setAttribute('opacity',1);ic2.setAttribute('opacity',i===8?0:1);
+   anim('m',3000,p=>{const q=ease(p);ic.setAttribute('transform',`translate(${104+(s.a==='palp'?10*Math.sin(q*30):0)},${85+q*150})`);ic2.setAttribute('transform',`translate(${334+(s.a==='palp'?10*Math.sin(q*30):0)},${75+q*(mL==='quad'?215:150)})`)})}
+ if(s.a==='tone'){$('mIconT').textContent='✋';ic.setAttribute('opacity',1);
+   anim('m',4000,p=>{const q=ease(p),c=Math.floor(p*8)%2===0;bic.style.transform=c?'scaleX(1.15)':'scaleX(1.08)';bic.setAttribute('fill','#ff6b8a');
+    ic.setAttribute('transform',`translate(${104+8*Math.sin(q*30)},${95+q*130})`);$('mCap').textContent='✊ 請個案雙手握拳用力 → 觸摸肌肉張力'})}
+ if(s.a==='both'){anim('m',2400,p=>{const on=Math.floor(p*6)%2;bic.setAttribute('fill',on?'#fbd7cc':'#ff6b8a');quad.setAttribute('fill',on?'#fbd7cc':'#ff6b8a')})}
+ if(s.a==='contract'){let k=0;anim('m',3200,p=>{const c=Math.floor(p*4)%2===0;bic.style.transform=c?'scaleX(1.18)':'scaleX(1)';bic.setAttribute('fill',c?'#ff6b8a':'#f3b3a2');$('mCap').textContent=c?'✊ 上肢雙手握拳用力 → 收縮：肌肉繃緊':'放鬆：繃緊消失';$('mNote').setAttribute('opacity',1)})}
+}
+
+/* ---------- 2 MEASURE ---------- */
+const MP={ac:[195,98],acL:[285,98],ol:[186,182],olL:[294,182],fi:[170,292],fiL:[310,292],as:[215,222],asL:[265,222],mm:[233,398],mmL:[247,398],pa:[221,318],paL:[259,318]};
+const meas=[
+ {k:'上肢長度',pts:'說出測量位置(2)、正確測量(2)、比較兩側並評估(2)',from:'ac',to:'fi',lab:'肩峰頂端 → 中指指尖',norm:'兩側相差 < 1 公分 → 正常',say:'「測量上肢長度，從肩峰頂端到中指指尖，右側○○公分、左側○○公分，兩側相差小於1公分，正常。」'},
+ {k:'下肢長度',pts:'說出測量位置(2)、正確測量(2)、比較兩側並評估(2)',from:'as',to:'mm',lab:'髂骨前上棘下緣 → 內脛骨踝（內踝）',norm:'兩側相差 < 1 公分 → 正常',say:'「測量下肢長度，從髂骨前上棘下緣到內踝，兩側相差小於1公分，正常。」'},
+ {k:'上臂肌肉大小',circ:'arm',lab:'肩峰到鷹嘴突的中點，量周徑',norm:'兩側差 1–3 公分，慣用手可能稍大；肌肉呈放鬆狀態',say:'「先量肩峰到鷹嘴突，找出中點，在放鬆狀態下量上臂周徑，兩側差在1–3公分內。」'},
+ {k:'大腿肌肉大小',circ:'thigh',lab:'髕骨中點向上 20 公分，量周徑',norm:'兩側差 1–3 公分；肌肉呈放鬆狀態',say:'「從髕骨中點向上20公分量大腿周徑，比較兩側。」'},
+ {k:'小腿肌肉大小',circ:'calf',lab:'髕骨中點向下 10 公分，量周徑',norm:'兩側差 1–3 公分；肌肉呈放鬆狀態',say:'「從髕骨中點向下10公分量小腿周徑，比較兩側。」'}
+];
+let mSel=0;
+function measBase(){return `
+ ${headF(240,52,26)}
+ <rect x="230" y="76" width="20" height="16" ${BODY}/>
+ <path d="M195 95 Q240 86 285 95 L280 225 L200 225Z" ${BODY}/>
+ <path d="M195 96 L182 180 L172 258 L186 260 L198 182 L210 110Z" ${BODY}/>
+ <path d="M285 96 L298 180 L308 258 L294 260 L282 182 L270 110Z" ${BODY}/>
+ <ellipse cx="174" cy="276" rx="9" ry="18" ${BODY}/><ellipse cx="306" cy="276" rx="9" ry="18" ${BODY}/>
+ <path d="M200 225 L280 225 L276 250 L262 250 L264 400 L250 402 L242 252 L238 252 L230 402 L216 400 L218 250 L204 250Z" ${BODY}/>
+ <circle cx="221" cy="318" r="7" fill="#fff" stroke="#d99a85"/><circle cx="259" cy="318" r="7" fill="#fff" stroke="#d99a85"/>
+ <path d="M214 400 L232 400 L234 414 L206 414Z" ${BODY}/><path d="M248 400 L266 400 L274 414 L246 414Z" ${BODY}/>
+ ${txt(150,432,'← 個案右側','font-size="11" fill="#7a7196"')}${txt(268,432,'個案左側 →','font-size="11" fill="#7a7196"')}
+ <g id="mLayer"></g>`}
+function buildMeasure(){
+ $('svMeasure').innerHTML=measBase();
+ $('pMeasure').innerHTML=meas.map((m,i)=>`<button class="pill" onclick="selMeas(${i})">${m.k}</button>`).join('');selMeas(0)}
+function selMeas(i){mSel=i;[...$('pMeasure').children].forEach((b,j)=>b.classList.toggle('on',j===i));const m=meas[i];
+ $('infoMeasure').innerHTML=`<h3 style="margin:4px 0">${m.k} <span class="tag">6 分</span></h3><p><b>測量位置：</b>${m.lab}</p><p><b>判讀：</b>${m.norm}</p><p class="sub" style="margin:0">評分：說出測量位置(2)、正確測量(2)、比較兩側並評估結果(2)</p><div class="say"><b>口述：</b>${m.say}</div>`;
+ $('mLayer').innerHTML='';playMeasure()}
+function dot(p,c,lab,dx=-8,anchor='end'){return `<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="${c}" class="pulse"><animate attributeName="r" values="5;9;5" dur="1.2s" repeatCount="indefinite"/></circle>${lab?txt(p[0]+dx,p[1]+4,lab,`text-anchor="${anchor}" font-size="12" fill="${c}" font-weight="700"`):''}`}
+function tape(a,b,id,c='#ff6b8a'){return `<line id="${id}" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${c}" stroke-width="4" stroke-dasharray="1" stroke-dashoffset="1" pathLength="1" style="transition:stroke-dashoffset 1.6s ease"/>`}
+function playMeasure(){const m=meas[mSel],L=$('mLayer');L.innerHTML='';
+ const later=(f,t)=>setTimeout(f,t);
+ if(!m.circ){const names={ac:'肩峰',fi:'中指指尖',as:'髂前上棘',mm:'內踝'};
+  L.innerHTML=dot(MP[m.from],'#ff6b8a',names[m.from])+tape(MP[m.from],MP[m.to],'tp1')+tape(MP[m.from+'L'],MP[m.to+'L'],'tp2','#3d8bff');
+  later(()=>{L.innerHTML+=dot(MP[m.to],'#ff6b8a',names[m.to]);requestAnimationFrame(()=>{$('tp1').style.strokeDashoffset=0})},500);
+  later(()=>{L.innerHTML+=dot(MP[m.from+'L'],'#3d8bff','')+dot(MP[m.to+'L'],'#3d8bff','');requestAnimationFrame(()=>{$('tp1').style.strokeDashoffset=0;const t2=$('tp2');t2.style.strokeDashoffset=0})},2300);
+  later(()=>{L.innerHTML+=txt(240,20,'比較兩側：相差 &lt; 1 cm → 正常','text-anchor="middle" font-weight="700" fill="#7c5cff" font-size="15"');$('tp1').style.strokeDashoffset=0;$('tp2').style.strokeDashoffset=0},4200);
+ } else {
+  let a,b,c,cL,rx,lab1;
+  if(m.circ==='arm'){a=MP.ac;b=MP.ol;c=[190,140];cL=[290,140];rx=13;lab1='中點'}
+  if(m.circ==='thigh'){a=MP.pa;b=[221,278];c=[222,278];cL=[258,278];rx=16;lab1='上 20 cm'}
+  if(m.circ==='calf'){a=MP.pa;b=[224,338];c=[224,338];cL=[256,338];rx=11;lab1='下 10 cm'}
+  L.innerHTML=dot(a,'#ff6b8a',m.circ==='arm'?'肩峰':'髕骨中點')+tape(a,b,'tp1','#ff9f1c');
+  later(()=>{if(m.circ==='arm')L.innerHTML+=dot(b,'#ff6b8a','鷹嘴突');requestAnimationFrame(()=>{$('tp1').style.strokeDashoffset=0})},400);
+  later(()=>{$('tp1').style.strokeDashoffset=0;L.innerHTML+=dot(c,'#ff6b8a',lab1,-22)+`<ellipse id="ce" cx="${c[0]}" cy="${c[1]}" rx="${rx}" ry="5" fill="none" stroke="#ff6b8a" stroke-width="4" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="transition:stroke-dashoffset 1.2s"/>`;requestAnimationFrame(()=>requestAnimationFrame(()=>{$('ce').style.strokeDashoffset=0}))},2200);
+  later(()=>{L.innerHTML+=`<ellipse id="ce2" cx="${cL[0]}" cy="${cL[1]}" rx="${rx}" ry="5" fill="none" stroke="#3d8bff" stroke-width="4" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="transition:stroke-dashoffset 1.2s"/>`;['tp1','ce'].forEach(x=>$(x).style.strokeDashoffset=0);requestAnimationFrame(()=>requestAnimationFrame(()=>{$('ce2').style.strokeDashoffset=0}))},3800);
+  later(()=>{L.innerHTML+=txt(240,20,'比較兩側：差 1–3 cm，慣用側可稍大','text-anchor="middle" font-weight="700" fill="#7c5cff" font-size="15"');['tp1','ce','ce2'].forEach(x=>$(x)&&($(x).style.strokeDashoffset=0))},5300);
+ }}
+
+/* ---------- 3 STRENGTH ---------- */
+const grades=[
+ ['0','無肌肉收縮'],['1','些微肌肉收縮（可摸到/看到收縮，但無關節動作）'],['2','無重力影響下可執行完整 ROM（如放在床上水平移動）'],['3','可對抗重力（如可將手自下垂狀態提起），但無法抵抗外力'],['4','可對抗重力且能部分抵抗外力'],['5','可完全抵抗外力而無困難（正常狀況）']];
+const strT=[
+ {k:'股四頭肌',how:'受檢者<b>坐於床緣、小腿自然下垂</b>，請受檢者做<b>腿部上舉</b>（伸直膝關節）的動作，並<b>抵抗檢查者的下壓施力</b>。',say:'「請您坐在床邊，把小腿往上抬伸直，我會往下壓，請您用力撐住不要被我壓下去。」→「右側股四頭肌肌力5分，可完全抵抗外力；左側也是5分，兩側相同。」'},
+ {k:'肱二頭肌',how:'1. 一手固定肘關節，一手握住受檢者手腕，呈肘關節彎曲姿勢（<b>前臂上抬約 45°</b>）。<br>2. 請受檢者<b>收縮（彎曲）肘關節</b>，以對抗檢查者<b>向外的拉力</b>。',say:'「我會把您的手往外拉，請您用力往內彎、不要被我拉直。」→ 說出肌力分數及意義，比較兩側。'},
+ {k:'肱三頭肌',how:'1. 一手固定肘關節，一手握住受檢者手腕，呈肘關節彎曲姿勢（<b>前臂上抬約 45°</b>）。<br>2. 請受檢者<b>伸直肘關節</b>，以對抗檢查者<b>向內的推力</b>。',say:'「我會把您的手往內推，請您用力把手伸直推開我。」→ 說出肌力分數及意義，比較兩側。'}];
+let sSel=0;
+function arrow(x1,y1,x2,y2,c,id=''){const a=Math.atan2(y2-y1,x2-x1),h=12;return `<g ${id?`id="${id}"`:''}><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="5" stroke-linecap="round"/><path d="M${x2} ${y2} L${x2-h*Math.cos(a-0.5)} ${y2-h*Math.sin(a-0.5)} L${x2-h*Math.cos(a+0.5)} ${y2-h*Math.sin(a+0.5)}Z" fill="${c}"/></g>`}
+function supineBase(prone){return `
+ <rect x="30" y="262" width="420" height="22" rx="4" fill="#d9f3ff" stroke="#9fcbe6"/>${txt(36,300,prone?'俯臥':'仰臥','fill="#7a7196" font-size="12"')}
+ ${headS(78,236,24,prone?90:-90)}
+ <rect x="102" y="216" width="150" height="44" rx="18" ${BODY}/>
+ <path d="M250 246 L420 246 L420 258 L250 258Z" fill="#eef2f4" stroke="#9aa8b1" stroke-width="1.5"/>`}
+function legSeg(px,py,len,ang,w=24,col='#ffc4ad'){const x=px+len*C(ang),y=py-len*S(ang);return {x,y,s:`<line x1="${px}" y1="${py}" x2="${x}" y2="${y}" stroke="#d99a85" stroke-width="${w+4}" stroke-linecap="round"/><line x1="${px}" y1="${py}" x2="${x}" y2="${y}" stroke="${col}" stroke-width="${w}" stroke-linecap="round"/>`}}
+function seatedLeg(e,mus='#f3b3a2'){
+ const kx=330,ky=236,L=118,ax=kx+L*S(e),ay=ky+L*C(e);
+ const s=`<rect x="110" y="252" width="225" height="20" rx="5" fill="#d9f3ff" stroke="#9fcbe6"/><rect x="122" y="272" width="10" height="70" fill="#9fcbe6"/><rect x="312" y="272" width="10" height="70" fill="#9fcbe6"/>${txt(116,350,'坐姿：坐於床緣，小腿自然下垂（側面觀）','fill="#7a7196" font-size="12"')}
+ ${headS(205,62,26)}
+ <rect x="180" y="90" width="54" height="152" rx="20" ${BODY}/>
+ <line x1="214" y1="110" x2="226" y2="215" stroke="#d99a85" stroke-width="22" stroke-linecap="round"/><line x1="214" y1="110" x2="226" y2="215" stroke="#ffe6da" stroke-width="18" stroke-linecap="round"/>
+ <line x1="205" y1="236" x2="${kx}" y2="${ky}" stroke="#d99a85" stroke-width="32" stroke-linecap="round"/><line x1="205" y1="236" x2="${kx}" y2="${ky}" stroke="#ffc4ad" stroke-width="28" stroke-linecap="round"/>
+ <ellipse cx="268" cy="228" rx="52" ry="8" fill="${mus}"/>
+ <line x1="${kx}" y1="${ky}" x2="${ax}" y2="${ay}" stroke="#d99a85" stroke-width="26" stroke-linecap="round"/><line x1="${kx}" y1="${ky}" x2="${ax}" y2="${ay}" stroke="#ffc4ad" stroke-width="22" stroke-linecap="round"/>
+ <line x1="${ax}" y1="${ay}" x2="${ax+30*C(e)}" y2="${ay-30*S(e)}" stroke="#d99a85" stroke-width="18" stroke-linecap="round"/><line x1="${ax}" y1="${ay}" x2="${ax+30*C(e)}" y2="${ay-30*S(e)}" stroke="#ffc4ad" stroke-width="14" stroke-linecap="round"/>`;
+ return {s:`<g transform="translate(-60 0)">${s}</g>`,ax:ax-60,ay}}
+
+function seatedArm(fa,mode){ // fa forearm angle from horizontal (up positive)
+ const ex=230,ey=230,L=95,wx=ex+L*C(fa),wy=ey-L*S(fa);
+ let s=`<rect x="120" y="300" width="160" height="14" rx="4" fill="#d9f3ff"/>${txt(124,330,'坐姿（側面觀）','fill="#7a7196" font-size="12"')}
+ ${headS(200,70,26)}
+ <rect x="175" y="98" width="52" height="140" rx="20" ${BODY}/><rect x="175" y="230" width="110" height="40" rx="16" ${BODY}/>
+ <line x1="230" y1="120" x2="${ex}" y2="${ey}" stroke="#d99a85" stroke-width="26" stroke-linecap="round"/><line x1="230" y1="120" x2="${ex}" y2="${ey}" stroke="#ffc4ad" stroke-width="22" stroke-linecap="round"/>
+ <line x1="${ex}" y1="${ey}" x2="${wx}" y2="${wy}" stroke="#d99a85" stroke-width="22" stroke-linecap="round"/><line x1="${ex}" y1="${ey}" x2="${wx}" y2="${wy}" stroke="#ffc4ad" stroke-width="18" stroke-linecap="round"/>
+ <circle cx="${wx+12*C(fa)}" cy="${wy-12*S(fa)}" r="12" fill="#ffc4ad" stroke="#d99a85" stroke-width="2"/>
+ <ellipse cx="${mode==='b'?238:222}" cy="175" rx="9" ry="34" fill="${mode==='b'?'#ff6b8a':'#f3b3a2'}" opacity=".8"/>
+ ${txt(120,175,mode==='b'?'肱二頭肌':'肱三頭肌','fill="#c9644b" font-weight="700"')}
+ <circle cx="${ex}" cy="${ey}" r="15" fill="none" stroke="#21b37a" stroke-width="4"/>${txt(ex-8,ey+36,'一手固定肘關節','fill="#21b37a" font-size="12" text-anchor="middle"')}
+ <circle cx="${wx}" cy="${wy}" r="15" fill="none" stroke="#3d8bff" stroke-width="4"/>`;
+ return {s,wx,wy}}
+function buildStrength(){
+ $('pStr').innerHTML=strT.map((m,i)=>`<button class="pill" onclick="selStr(${i})">${m.k}</button>`).join('');
+ $('pGrade').innerHTML=grades.map((g,i)=>`<button class="pill" onclick="showGrade(${i})">${g[0]} 分</button>`).join('');
+ selStr(0)}
+function selStr(i){sSel=i;[...$('pStr').children].forEach((b,j)=>b.classList.toggle('on',j===i));[...$('pGrade').children].forEach(b=>b.classList.remove('on'));$('gradeTxt').innerHTML='點選分數，上方動畫會以坐姿股四頭肌示範該分級的表現（2 分以平放床上示範去除重力）。';
+ const m=strT[i];$('infoStr').innerHTML=`<h3 style="margin:4px 0">${m.k}</h3><p><b>操作方式：</b><br>${m.how}</p><p class="sub" style="margin:0">評分：說出並指示操作方式(1)、說出肌力強度及代表意義(1)、比較兩側(1)</p><div class="say"><b>口述：</b>${m.say}</div>`;
+ const sv=$('svStr');stopRaf('s');
+ if(i===0){anim('s',99999999,p=>{const t=performance.now()/1000;const ph=(t%4);let e=ph<1?ph*75:ph<3.2?75-2*Math.abs(Math.sin(t*6)):75*(1-(ph-3.2)/.8);const hold=ph>1&&ph<3.2;const l=seatedLeg(e,hold?'#ff6b8a':'#f3b3a2');
+   sv.innerHTML=l.s+(hold?`<circle cx="240" cy="236" r="16" fill="none" stroke="#21b37a" stroke-width="4"/>`+txt(230,200,'一手固定大腿','text-anchor="middle" fill="#21b37a" font-size="12" font-weight="700"')+arrow(l.ax-6,l.ay-78,l.ax-6,l.ay-22,'#3d8bff')+txt(l.ax-6,l.ay-86,'檢查者往下壓','text-anchor="middle" fill="#3d8bff" font-weight="700"')+arrow(l.ax+24,l.ay+44,l.ax+24,l.ay-4,'#ff6b8a')+txt(l.ax+10,l.ay+62,'受檢者小腿上舉對抗','text-anchor="middle" fill="#ff6b8a" font-weight="700"'):'')+txt(240,30,'股四頭肌（坐姿）：小腿上舉伸直，抵抗下壓','text-anchor="middle" font-weight="700" font-size="15" fill="#7c5cff"')})}
+
+ else{const b=i===1;anim('s',99999999,p=>{const t=performance.now()/1000;const fa=45+Math.sin(t*7)*2.5;const a=seatedArm(fa,b?'b':'t');
+   const ex=a.wx,ey=a.wy;
+   const k=.7071,ang45=`<line x1="230" y1="230" x2="330" y2="230" stroke="#9aa8b1" stroke-width="2" stroke-dasharray="5 5"/><path d="M285 230 A55 55 0 0 0 268.9 191.1" fill="none" stroke="#ff9f1c" stroke-width="3.5"/>`+txt(292,214,'45°','fill="#ff9f1c" font-weight="700" font-size="16"');
+   sv.innerHTML=a.s+(b?ang45+arrow(ex+k*20,ey+k*20,ex+k*80,ey+k*80,'#3d8bff')+txt(ex+k*80+6,ey+k*80+18,'檢查者向外拉','fill="#3d8bff" font-weight="700"')+arrow(ex-k*15,ey-k*15,ex-k*70,ey-k*70,'#ff6b8a')+txt(ex-k*70,ey-k*70-10,'受檢者屈曲肘關節（往內彎）','text-anchor="middle" fill="#ff6b8a" font-weight="700"')
+   :(()=>{const px=263.6,py=196.4;return ang45+arrow(ex+k*80,ey+k*80,ex+k*20,ey+k*20,'#3d8bff')+txt(ex+k*80+6,ey+k*80+18,'檢查者向內推','fill="#3d8bff" font-weight="700"')+arrow(px-k*80,py-k*80,px-k*22,py-k*22,'#ff6b8a')+txt(px-k*80,py-k*80-10,'受檢者伸直肘關節（往下伸）','text-anchor="middle" fill="#ff6b8a" font-weight="700"')})())
+   +txt(240,30,b?'肱二頭肌：屈肘對抗向外拉力':'肱三頭肌：伸肘對抗向內推力','text-anchor="middle" font-weight="700" font-size="15" fill="#7c5cff"')})}
+}
+function showGrade(g){[...$('pGrade').children].forEach((b,j)=>b.classList.toggle('on',j===g));[...$('pStr').children].forEach(b=>b.classList.remove('on'));
+ $('gradeTxt').innerHTML=`<b>${g} 分：</b>${grades[g][1]}`;const sv=$('svStr');
+ anim('s',99999999,p=>{const t=performance.now()/1000,ph=t%4;let e=0,mus='#f3b3a2',extra='';
+  if(g===2){const dx=ph<2?ph*15:(4-ph)*15;const l=legSeg(250+dx,252,175,0);
+   sv.innerHTML=supineBase()+l.s+arrow(380,225,430,225,'#ff6b8a')+txt(290,180,'去除重力影響（平放床上）：','fill="#ff6b8a" font-weight="700"')+txt(290,200,'可水平移動，但無法抬離床面','fill="#ff6b8a" font-weight="700"')+txt(240,30,'肌力 2 分','text-anchor="middle" font-weight="700" font-size="18" fill="#7c5cff"');return}
+  if(g===1)mus=Math.floor(t*4)%2?'#ff6b8a':'#f3b3a2';
+  if(g>=3){e=ph<1?ph*75:ph<3?75:75*(4-ph)}
+  if(g===4&&ph>1&&ph<3){e=75-Math.min(1,(ph-1))*25+Math.sin(t*9)*2}
+  if(g===5&&ph>1&&ph<3){e=75+Math.sin(t*9)*1}
+  if(g>=3)mus=e>5?'#ff6b8a':'#f3b3a2';
+  const l=seatedLeg(e,mus);
+  if(g>=4&&ph>1&&ph<3)extra=arrow(l.ax-6,l.ay-78,l.ax-6,l.ay-22,'#3d8bff')+txt(l.ax-6,l.ay-86,g===4?'稍加阻力 → 部分抵抗':'施予阻力 → 完全抵抗','text-anchor="middle" fill="#3d8bff" font-weight="700"');
+  if(g===3&&ph>1&&ph<3)extra=txt(330,110,'可抬起對抗重力（不加阻力）','text-anchor="middle" fill="#ff6b8a" font-weight="700"');
+  if(g===0)extra=txt(330,110,'無任何肌肉收縮','text-anchor="middle" fill="#7a7196" font-weight="700"');
+  if(g===1)extra=txt(330,110,'觸摸到些微收縮，小腿不動','text-anchor="middle" fill="#ff6b8a" font-weight="700"');
+  sv.innerHTML=l.s+extra+txt(240,30,`肌力 ${g} 分`,'text-anchor="middle" font-weight="700" font-size="18" fill="#7c5cff"')})}
+
+function drawCard(){const f=$('flip');f.classList.remove('f');setTimeout(()=>{const n=Math.floor(Math.random()*6);$('flipN').textContent=n;$('flipB').innerHTML=`<div><b style="font-size:1.6rem">${n} 分</b><br>${grades[n][1]}</div>`},300)}
+
+/* ---------- 4 JOINT ---------- */
+const limbJ=(name,side,act,sayAct)=>({name,steps:[
+  ['說出並指出關節',`上肢可選<b>腕關節／肘關節</b>、下肢可選<b>膝關節／踝關節</b>，說出關節名稱並比較兩側：${side}(1)`],
+  ['視診','關節周圍 5–7 公分：外觀（發紅、腫脹、瘀傷、皮膚萎縮或破損）；外形（畸形；伸展時平坦、彎曲時圓滑，與四周組織有無不同）；對稱性（大小）（上下肢共 4 分）'],
+  ['觸診','以<b>食指與中指指腹</b>輕觸，從中心向外 5–7 公分範圍，<b>由外往中心</b>：大小（腫脹）、溫度（發熱）、感覺（疼痛、壓痛、麻）、結節（腫塊）（上下肢共 4 分）'],
+  ['關節活動',`${act}：有無疼痛、關節活動受限、捻髮音（上下肢共 2 分）`],
+  ['比較二側','兩側比較（上下肢共 2 分）']],
+  say:[`「這是${side}的${name.replace(/（.*/,'')}，我會檢查兩側。」`,'「外觀無發紅腫脹瘀傷、皮膚無萎縮破損；伸展時平坦、彎曲時圓滑，與四周組織無不同；兩側大小對稱。」','「無腫脹、無發熱、無疼痛壓痛或麻、無結節。」',`${sayAct}……活動時無疼痛、無受限、無捻髮音。」`,'「兩側比較對稱。」→ 全部視診／觸診完再一起回答結果']});
+const jSets={
+ tmj:{name:'顳下頷關節',steps:[
+  ['說出並指出顳下頷關節','位於雙側耳屏前方(1)'],
+  ['視診','看關節周圍 5–7 公分組織：外觀（發紅、腫脹、瘀傷、皮膚萎縮或破損）、外形（畸形；與四周組織無不同）、對稱性（大小）(2)'],
+  ['觸診','<b>站在病人後方</b>，以<b>雙手食指與中指指腹</b>置於<b>雙側耳屏前方</b>的顳顎關節處，<b>由關節周圍輕柔移向關節中心</b>：大小（腫脹）、溫度（發熱）、感覺（疼痛、壓痛、麻）、結節（腫塊）(2)'],
+  ['關節活動','手指留在關節處，請病人<b>緩慢張口、閉口</b>：評估壓痛、腫脹及活動時可觸及的<b>彈響或摩擦感</b>；有無疼痛、活動受限、捻髮音(1)'],
+  ['比較二側','雙手同時觸診，比較兩側(1)']],
+  say:['「這是顳下頷關節，位於耳屏前方，我會檢查兩側。」','「外觀無發紅、腫脹、瘀傷、皮膚萎縮或破損；外形無畸形；兩側對稱。」','「我會站在您後面，用雙手輕放在您兩側耳朵前面。」→「大小無腫脹、溫度無發熱、無疼痛壓痛或麻、無結節。」','「請您慢慢把嘴巴張開……再慢慢閉上。」→「張閉口時無壓痛、無腫脹，未觸及彈響或摩擦感，無活動受限。」','「兩側比較對稱，無異常。」'],
+  },
+ wrist:limbJ('腕關節（上肢）','上肢','屈曲、伸直','「請您手腕往下彎……再往上翹'),
+ elbow:limbJ('肘關節（上肢）','上肢','屈曲、伸直','「請您彎曲再伸直手肘'),
+ knee:limbJ('膝關節（下肢）','下肢','屈曲、伸直','「請您彎曲再伸直膝蓋'),
+ ankle:limbJ('踝關節（下肢）','下肢','背屈、蹠屈','「請您腳板往上勾……再往下踩')
+};
+let jSel='tmj',jStepI=0;
+const SK='fill="#ffe6da" stroke="#d99a85" stroke-width="2.5" stroke-linejoin="round"';
+const SKd='fill="#ffd9c9" stroke="#d99a85" stroke-width="2.5" stroke-linejoin="round"';
+function jointBase(k,open=0){
+ const cap=t=>txt(28,30,t,'fill="#7a7196" font-size="13" font-weight="700"');
+ if(k==='tmj')return `${cap('側面觀')}
+  <path d="M250 240 C250 290 246 340 240 390 L330 390 C322 340 318 290 318 236 Z" ${SKd}/>
+  <path d="M168 104 C170 60 236 36 312 42 C372 48 404 92 400 150 C398 196 380 222 350 236 C330 244 306 236 296 216 L290 204 L176 214 Q170 210 168 202 Q150 200 146 196 Q138 192 140 186 Q150 172 160 160 L162 136 Z" ${SK}/>
+  <path d="M176 214 L290 204 L176 252 Z" fill="#b84a5e"/>
+  <g transform="rotate(${-open} 292 198)"><path d="M174 207 L292 196 C298 226 290 252 262 268 C236 282 204 280 186 268 Q170 258 170 246 Q166 236 172 228 Q168 220 174 207 Z" fill="#ffe6da"/><path d="M293 206 C298 228 290 252 262 268 C236 282 204 280 186 268 Q170 258 170 246 Q166 236 172 228 Q168 220 176 214" fill="none" stroke="#d99a85" stroke-width="2.5" stroke-linecap="round"/><path d="M176 214 Q200 216 222 212" fill="none" stroke="#d99a85" stroke-width="2" stroke-linecap="round"/>
+   <path d="M174 230 Q182 233 190 229" fill="none" stroke="#e07a8a" stroke-width="3" stroke-linecap="round"/></g>
+  <path d="M170 104 C178 50 250 30 318 40 C376 50 410 100 398 168 C390 140 370 118 344 112 C318 96 280 90 250 96 C220 100 196 98 170 104 Z" fill="#8a6152"/>
+  <ellipse cx="322" cy="178" rx="17" ry="27" ${SK}/><path d="M324 162 Q312 170 316 184 Q320 192 314 196" fill="none" stroke="#d99a85" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M190 128 Q200 122 212 126" fill="none" stroke="#6b4a40" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="202" cy="143" rx="5" ry="7" fill="#3b3355"/><circle cx="204" cy="140" r="1.8" fill="#fff"/>
+  <ellipse cx="222" cy="176" rx="14" ry="8" fill="#ffb3c4" opacity=".7"/>
+  ${txt(330,150,'耳','font-size="12" fill="#7a7196"')}`;
+ if(k==='wrist'){return `${cap('右腕側面觀（手掌朝下）')}
+  <circle cx="236" cy="168" r="8" ${SK}/>
+  <path d="M-10 148 C80 150 180 158 244 166 L244 218 C180 224 80 234 -10 238 Z" ${SK}/>
+  <g transform="rotate(${-open} 240 192)">
+   <path d="M232 214 C270 222 300 226 320 222 Q336 218 332 208 Q326 200 310 203 C290 205 262 204 236 198 Z" ${SKd}/>
+   <path d="M234 167 C268 159 318 157 352 162 L426 168 Q446 172 445 185 Q444 197 426 198 L354 203 C330 210 286 220 234 216 C226 200 226 182 234 167 Z" ${SK}/>
+   <path d="M354 164 Q360 184 356 202" fill="none" stroke="#e7b3a2" stroke-width="2" stroke-linecap="round"/>
+   <path d="M394 167 Q398 184 394 200" fill="none" stroke="#e7b3a2" stroke-width="2" stroke-linecap="round"/>
+   <path d="M428 170 Q442 173 441 182 L430 182 Q426 176 428 170 Z" fill="#fff" stroke="#e7b3a2" stroke-width="1.5"/>
+  </g>
+  <circle cx="240" cy="192" r="21" fill="#ffe6da"/>`}
+ if(k==='elbow'){return `${cap('右肘側面觀（面向右）')}
+  <g transform="rotate(${-open} 240 192)">
+   <path d="M206 186 C200 250 210 320 222 372 Q240 380 258 372 C268 320 278 250 276 186 Z" ${SK}/>
+   <path d="M222 368 Q214 396 226 412 L256 412 Q268 396 258 368 Z" ${SKd}/>
+  </g>
+  <circle cx="204" cy="204" r="13" ${SK}/>
+  <path d="M200 -10 L198 166 Q196 210 224 224 L258 224 Q286 208 284 166 C292 110 296 60 286 -10 Z" ${SK}/>
+  <circle cx="240" cy="196" r="30" fill="#ffe6da"/>
+  <path d="M284 60 C300 90 300 130 284 160" fill="none" stroke="#e7b3a2" stroke-width="2" stroke-linecap="round"/>
+  ${txt(150,236,'鷹嘴突','font-size="12" fill="#7a7196"')}`}
+ if(k==='knee'){return `${cap('右膝側面觀（面向右）')}
+  <g transform="rotate(${open} 240 192)">
+   <path d="M210 186 C192 240 202 296 220 350 L254 350 C262 296 276 240 272 186 Z" ${SK}/>
+   <path d="M216 344 L258 344 C284 350 318 358 334 366 Q344 376 330 382 L212 382 Q200 364 216 344 Z" ${SKd}/>
+  </g>
+  <path d="M194 -10 C190 60 194 130 202 172 Q210 218 240 224 Q274 220 282 188 C290 128 294 60 290 -10 Z" ${SK}/>
+  <circle cx="240" cy="196" r="30" fill="#ffe6da"/>
+  <ellipse cx="282" cy="194" rx="11" ry="19" ${SKd}/>${txt(300,180,'髕骨','font-size="12" fill="#7a7196"')}`}
+ if(k==='ankle'){return `${cap('右踝外側面觀（面向右）')}
+  <g transform="rotate(${-open} 240 200)">
+   <path d="M216 174 C198 196 194 228 214 240 L398 242 Q420 240 418 224 Q414 210 394 206 C340 196 300 186 270 168 Z" ${SK}/>
+   <path d="M404 210 Q414 214 413 222 L402 222 Q400 216 404 210 Z" fill="#fff" stroke="#e7b3a2" stroke-width="1.5"/>
+  </g>
+  <path d="M204 -10 C198 60 206 130 212 186 L270 186 C274 130 282 60 276 -10 Z" ${SK}/>
+  <path d="M212 120 C204 150 206 170 214 186" fill="none" stroke="#e7b3a2" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="240" cy="196" r="24" fill="#ffe6da"/>
+  <circle cx="246" cy="190" r="10" fill="#ffd9c9" stroke="#e0a894" stroke-width="2"/>${txt(262,176,'外踝','font-size="12" fill="#7a7196"')}`}
+}
+function buildJoint(){$('pJoint').innerHTML=Object.keys(jSets).map(k=>`<button class="pill" data-k="${k}" onclick="selJoint('${k}')">${jSets[k].name}</button>`).join('');selJoint('tmj')}
+function selJoint(k){jSel=k;[...$('pJoint').children].forEach(b=>b.classList.toggle('on',b.dataset.k===k));
+ $('stJoint').innerHTML=jSets[k].steps.map((s,i)=>`<li onclick="jStep(${i})"><span class="n">${i+1}</span>${s[0]}<small>${s[1]}</small></li>`).join('');jStep(0)}
+function jStep(i){jStepI=i;const J=jSets[jSel];[...$('stJoint').children].forEach((li,j)=>li.classList.toggle('on',j===i));$('sayJoint').innerHTML='<b>口述：</b>'+J.say[i];
+ const sv=$('svJoint'),cx=jSel==='tmj'?296:240,cy=jSel==='tmj'?192:192;
+ anim('j',99999999,()=>{const t=performance.now()/1000;const w=Math.sin(t*1.6);let op=0,cap='';if(i===3){if(jSel==='tmj')op=Math.max(0,Math.sin(t*1.2))*16;if(jSel==='elbow'){op=Math.max(0,w)*120;cap=w>.5?'屈曲中…':'伸直'}if(jSel==='knee'){op=Math.max(0,w)*90;cap=w>.5?'屈曲中…':'伸直'}if(jSel==='wrist'){op=w*45;cap=w>.3?'伸直（背伸）':w<-.3?'屈曲':'中立'}if(jSel==='ankle'){op=w>0?w*20:w*45;cap=w>.3?'背屈（腳板往上勾）':w<-.3?'蹠屈（腳板往下踩）':'中立'}}let s=jointBase(jSel,op);if(cap)s+=txt(240,395,cap,'text-anchor="middle" fill="#7c5cff" font-weight="700"');
+  const zone=`<circle cx="${cx}" cy="${cy}" r="50" fill="rgba(124,92,255,.08)" stroke="#7c5cff" stroke-dasharray="5 4"/><circle cx="${cx}" cy="${cy}" r="70" fill="none" stroke="#7c5cff" stroke-dasharray="2 5"/>${txt(cx+52,cy-52,'5–7 cm','fill="#7c5cff" font-size="12" font-weight="700"')}`;
+  if(i===0)s+=`<circle cx="${cx}" cy="${cy}" r="${8+4*Math.sin(t*5)}" fill="#ff6b8a"/>`+txt(cx-20,cy-26,J.name.replace(/（.*/,''),'text-anchor="end" fill="#ff6b8a" font-weight="700"');
+  if(i===1){const a=t*1.5;s+=zone+`<text x="${cx+60*Math.cos(a)}" y="${cy+60*Math.sin(a)+6}" font-size="22" text-anchor="middle">👁</text>`}
+  if(i===2&&jSel==='tmj'){const ph=(t%3)/3,r=55*(1-ph),a=t*4;const fx=cx+r*Math.cos(a),fy=cy+r*Math.sin(a);
+   s+=`<circle cx="${cx}" cy="${cy}" r="55" fill="rgba(124,92,255,.08)" stroke="#7c5cff" stroke-dasharray="5 4"/><circle cx="${fx}" cy="${fy}" r="8" fill="#3d8bff" opacity=".85"/><circle cx="${fx+13*Math.cos(a+1.6)}" cy="${fy+13*Math.sin(a+1.6)}" r="8" fill="#3d8bff" opacity=".6"/>`+txt(240,352,'站在病人後方，雙手同時觸診兩側','text-anchor="middle" fill="#3d8bff" font-weight="700"')+txt(240,372,'食指＋中指指腹：由關節周圍輕柔移向中心','text-anchor="middle" fill="#3d8bff" font-weight="700"')}
+  else if(i===2){const ph=(t%3)/3,r=70*(1-ph),a=t*5;const fx=cx+r*Math.cos(a),fy=cy+r*Math.sin(a);
+   s+=zone+`<circle cx="${fx}" cy="${fy}" r="8" fill="#3d8bff" opacity=".85"/><circle cx="${fx+12*Math.cos(a+1.6)}" cy="${fy+12*Math.sin(a+1.6)}" r="8" fill="#3d8bff" opacity=".6"/>`+txt(240,372,'食指＋中指指腹：由外往中心','text-anchor="middle" fill="#3d8bff" font-weight="700"')}
+  if(i===3)s+=(jSel==='tmj'?`<circle cx="${cx-7}" cy="${cy}" r="8" fill="#3d8bff" opacity=".85"/><circle cx="${cx+7}" cy="${cy+4}" r="8" fill="#3d8bff" opacity=".6"/>`+txt(240,352,'手指留在關節處，請病人緩慢張口、閉口','text-anchor="middle" fill="#ff6b8a" font-weight="700"')+txt(240,372,'壓痛？腫脹？彈響或摩擦感？','text-anchor="middle" fill="#ff6b8a" font-weight="700"'):`<circle cx="${cx}" cy="${cy}" r="10" fill="#3d8bff" opacity=".8"/>`);
+  if(i===4)s+=txt(240,372,'⇄ 與對側比較','text-anchor="middle" fill="#7c5cff" font-weight="700" font-size="16"');
+  sv.innerHTML=s})}
+
+/* ---------- 5 SPINE ---------- */
+const spSteps=[
+ ['指示病人直立','從背後觀察，請病人背對檢查者自然站直'],
+ ['假想線①','從頭沿脊椎而下的直線（頸椎 C7 到臀溝）。C7＝第七頸椎，低頭時脖子後方最容易突出的那一節骨頭'],
+ ['假想線②','肩胛骨上的橫線'],
+ ['假想線③','髂骨上的橫線（上臀線）'],
+ ['假想線④','臀部皺褶下方的橫線（下臀線）'],
+ ['三個脊柱弧線','側面觀：頸部凹面、胸部凸面、腰部凹面'],
+ ['比較兩側等高','兩側肩胛骨、髂骨棘與臀緣是否同高'],
+ ['脊柱側彎','指示病人身體往前彎腰，觀察有無脊柱側彎（兩側背部是否等高）']];
+const spSay=['「請您背對我站直，雙手自然下垂。」','請個案低頭，摸到脖子後方最突出的那一節骨頭就是 C7（第七頸椎）。「第一條假想線：從頸椎第七節沿脊椎往下到臀溝，呈一直線。」','「第二條：兩側肩胛骨上的橫線。」','「第三條：兩側髂骨上的橫線，也就是上臀線。」','「第四條：臀部皺褶下方的橫線，也就是下臀線。」','「脊柱有三個弧線：頸部凹面、胸部凸面、腰部凹面。」','「兩側肩胛骨、髂骨棘與臀緣同高。」','「請您身體往前彎腰……脊柱無側彎，兩側背部等高。」'];
+function backFig(){const vt=[...Array(14)].map((_,i)=>`<circle cx="170" cy="${100+i*12}" r="2.4" fill="#e7b3a2"/>`).join('');return `
+ <path d="M112 112 Q96 120 94 150 L88 230 Q86 262 92 276 Q100 284 106 274 L110 240 L118 160 Z" ${SK}/>
+ <path d="M228 112 Q244 120 246 150 L252 230 Q254 262 248 276 Q240 284 234 274 L230 240 L222 160 Z" ${SK}/>
+ <path d="M118 300 Q114 340 124 392 L160 392 Q166 350 168 316 Z" ${SK}/><path d="M222 300 Q226 340 216 392 L180 392 Q174 350 172 316 Z" ${SK}/>
+ <path d="M120 392 L162 392 Q164 402 154 404 L122 404 Q114 400 120 392 Z M178 392 L220 392 Q226 400 218 404 L186 404 Q176 402 178 392 Z" fill="#ffd9c9" stroke="#d99a85" stroke-width="2"/>
+ <path d="M160 74 L160 90 C140 94 118 98 108 108 Q98 116 102 140 L108 200 Q110 226 116 244 Q110 272 114 298 Q120 330 146 334 Q162 334 170 326 Q178 334 194 334 Q220 330 226 298 Q230 272 224 244 Q230 226 232 200 L238 140 Q242 116 232 108 C222 98 200 94 180 90 L180 74 Z" ${SK}/>
+ <path d="M136 120 Q152 116 162 124 Q158 150 148 174 Q136 152 136 120 Z" fill="#ffd9c9" stroke="#e7b3a2" stroke-width="2"/>
+ <path d="M204 120 Q188 116 178 124 Q182 150 192 174 Q204 152 204 120 Z" fill="#ffd9c9" stroke="#e7b3a2" stroke-width="2"/>
+ ${vt}
+ <path d="M118 240 Q140 232 160 244 M222 240 Q200 232 180 244" fill="none" stroke="#e7b3a2" stroke-width="2" stroke-linecap="round"/>
+ <path d="M170 266 L170 322" stroke="#d99a85" stroke-width="2" stroke-linecap="round"/>
+ <path d="M120 318 Q144 330 166 320 M174 320 Q196 330 220 318" fill="none" stroke="#d99a85" stroke-width="2" stroke-linecap="round"/>
+ <circle cx="170" cy="50" r="27" ${SK}/>
+ <path d="M143 52 C140 24 200 18 197 52 C192 40 150 40 143 52 Z" fill="#8a6152"/><path d="M143 50 Q146 66 156 72 L184 72 Q194 66 197 50 Q196 40 170 40 Q146 40 143 50 Z" fill="#8a6152"/>
+ <ellipse cx="142" cy="54" rx="5" ry="9" ${SK}/><ellipse cx="198" cy="54" rx="5" ry="9" ${SK}/>
+ ${txt(170,18,'背面觀','text-anchor="middle" fill="#7a7196" font-size="13" font-weight="700"')}`}
+function sideFig(bend=0,hi=-1){const seg=(d,i)=>`<path d="${d}" fill="none" stroke="${hi===i||hi===9?'#ff6b8a':'#c9b8ff'}" stroke-width="${hi===i||hi===9?6:4.5}" stroke-linecap="round"/>`;
+ return `<g transform="rotate(${bend} 370 270)">
+ <path d="M376 72 L376 90 C356 98 346 120 343 150 C340 180 344 204 352 222 C358 240 350 258 344 278 Q348 300 380 300 L404 296 Q412 272 406 250 C412 210 414 160 410 124 Q406 98 392 90 L392 72 Z" ${SK}/>
+ <circle cx="386" cy="54" r="25" ${SK}/>
+ <path d="M362 58 C356 30 400 18 412 44 C400 36 380 38 372 52 Q370 66 366 74 Q360 68 362 58 Z" fill="#8a6152"/>
+ <ellipse cx="380" cy="58" rx="6" ry="9" ${SK}/>
+ <ellipse cx="398" cy="52" rx="3" ry="4" fill="#3b3355"/><ellipse cx="400" cy="66" rx="6" ry="3.5" fill="#ffb3c4" opacity=".7"/>
+ <path d="M386 104 Q376 112 378 160 L382 236 Q384 252 392 252 Q398 248 396 232 L394 160 Q396 116 386 104 Z" fill="#ffd9c9" stroke="#d99a85" stroke-width="2"/>
+ ${seg('M372 82 Q380 108 372 132',0)}${seg('M372 132 Q352 175 366 218',1)}${seg('M366 218 Q384 246 368 276',2)}
+ ${hi>=0&&hi<9?txt(hi===1?300:410,[110,178,248][hi],['頸部凹面','胸部凸面','腰部凹面'][hi],'fill="#ff6b8a" font-weight="700"'):''}
+ ${hi===9?txt(410,110,'頸凹','fill="#ff6b8a" font-size="12" font-weight="700"')+txt(300,178,'胸凸','fill="#ff6b8a" font-size="12" font-weight="700"')+txt(410,248,'腰凹','fill="#ff6b8a" font-size="12" font-weight="700"'):''}
+ </g>
+ <path d="M352 288 Q354 330 368 392 L394 392 Q400 340 404 288 Z" ${SK}/><path d="M368 390 L398 390 Q420 394 424 402 Q422 408 410 408 L366 408 Q360 400 368 390 Z" fill="#ffd9c9" stroke="#d99a85" stroke-width="2"/>${txt(384,18,'側面觀','text-anchor="middle" fill="#7a7196" font-size="13" font-weight="700"')}`}
+function buildSpine(){$('stSpine').innerHTML=spSteps.map((s,i)=>`<li onclick="spStep(${i})"><span class="n">${i+1}</span>${s[0]}<small>${s[1]}</small></li>`).join('');spStep(0)}
+function line(x1,y1,x2,y2,c,id){return `<line id="${id}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="3.5" stroke-dasharray="1" stroke-dashoffset="1" pathLength="1" style="transition:stroke-dashoffset 1.2s"/>`}
+function spStep(i){[...$('stSpine').children].forEach((li,j)=>li.classList.toggle('on',j===i));$('saySpine').innerHTML='<b>口述：</b>'+spSay[i];
+ const sv=$('svSpine');stopRaf('sp');
+ const L=[[170,90,170,300,'C7 → 臀溝'],[100,122,240,122,'肩胛骨線'],[100,244,240,244,'上臀線（髂骨）'],[100,322,240,322,'下臀線（臀部皺褶）']];
+ if(i===5){anim('sp',99999999,()=>{const h=Math.floor(performance.now()/1300)%4;sv.innerHTML=backFig()+sideFig(0,h===3?9:h)});return}
+ if(i===7){anim('sp',99999999,()=>{const t=performance.now()/1000,b=Math.min(1,Math.max(0,Math.sin(t*1.2)*1.3))*55;sv.innerHTML=backFig()+sideFig(b,9)+txt(240,395,b>50?'從背後觀察兩側背部（肋骨）是否等高':'請病人往前彎腰','text-anchor="middle" fill="#ff6b8a" font-weight="700"')});return}
+ let s=backFig()+sideFig(0,-1);if(i>=1&&i<=6)s+=`<circle cx="170" cy="90" r="${i===1?8:6}" fill="#ff9f1c" stroke="#fff" stroke-width="2">${i===1?'<animate attributeName="r" values="6;10;6" dur="1.2s" repeatCount="indefinite"/>':''}</circle>`+(i===1?'<line x1="160" y1="88" x2="108" y2="60" stroke="#ff9f1c" stroke-width="1.5"/>'+txt(104,52,'C7 第七頸椎','text-anchor="end" font-size="13" fill="#ff9f1c" font-weight="700"')+txt(106,68,'頸後最突出的骨頭','text-anchor="end" font-size="11" fill="#ff9f1c"'):'');const show=i===6?[0,1,2,3]:L.map((_,j)=>j).filter(j=>j<i);
+ show.forEach(j=>{const l=L[j];s+=line(l[0],l[1],l[2],l[3],j===i-1||i===6?'#ff6b8a':'#3d8bff','sl'+j)+txt(j===0?178:244,j===0?200:l[1]+4,j===i-1||i>=6?l[4]:'',`fill="${j===i-1?'#ff6b8a':'#3d8bff'}" font-size="12" font-weight="700"`)});
+ if(i===6)s+=[122,244,322].map(y=>`<circle cx="104" cy="${y}" r="6" fill="#21b37a"/><circle cx="236" cy="${y}" r="6" fill="#21b37a"/>`).join('')+txt(170,395,'兩側等高 ✓','text-anchor="middle" fill="#21b37a" font-weight="700" font-size="15"');
+ sv.innerHTML=s;requestAnimationFrame(()=>requestAnimationFrame(()=>show.forEach(j=>{const e=$('sl'+j);if(e){if(j<i-1)e.style.transition='none';e.style.strokeDashoffset=0}})))}
+
+/* ---------- ROM ENGINE ---------- */
+const views={
+ sideStand:()=>({p:[240,128],len:115,w:20,bg:`${headS(240,68,28)}<rect x="214" y="102" width="52" height="150" rx="20" ${BODY}/><rect x="222" y="245" width="18" height="135" rx="8" ${BODY}/><rect x="240" y="245" width="18" height="135" rx="8" ${BODY}/><path d="M222 378 L268 378 L270 390 L222 390Z" ${BODY}/>${txt(30,30,'側面觀（面向右）','fill="#7a7196" font-size="12"')}`}),
+ frontStand:()=>({p:[282,124],len:115,w:20,bg:`${headF(240,66,28)}<path d="M198 100 Q240 90 282 100 L276 250 L204 250Z" ${BODY}/><path d="M198 104 L184 230" stroke="#d99a85" stroke-width="24" stroke-linecap="round"/><path d="M198 104 L184 230" stroke="#ffe6da" stroke-width="20" stroke-linecap="round"/><rect x="206" y="245" width="28" height="135" rx="10" ${BODY}/><rect x="246" y="245" width="28" height="135" rx="10" ${BODY}/><line x1="240" y1="40" x2="240" y2="390" stroke="#9aa8b1" stroke-dasharray="4 6"/>${txt(30,30,'正面觀','fill="#7a7196" font-size="12"')}${txt(244,392,'中線','fill="#9aa8b1" font-size="11"')}`}),
+ topShoulder:()=>({p:[320,220],len:120,w:20,bg:`<ellipse cx="240" cy="220" rx="85" ry="34" ${BODY}/><ellipse cx="240" cy="190" rx="8" ry="7" ${BODY}/><circle cx="240" cy="220" r="30" fill="#8a6152" stroke="#6b4a40" stroke-width="2"/><ellipse cx="210" cy="220" rx="5" ry="8" ${BODY}/><ellipse cx="270" cy="220" rx="5" ry="8" ${BODY}/>${txt(150,150,'↑ 前方（臉朝向）','text-anchor="middle" fill="#7a7196" font-size="12" font-weight="700"')}${txt(30,30,'由上往下看（俯視）','fill="#7a7196" font-size="12"')}${txt(30,48,'起始：手臂外展 90°、與地面平行','fill="#7a7196" font-size="12"')}`}),
+ sideRot:()=>({p:[262,132],len:95,w:18,bg:`${headS(240,68,28)}<rect x="214" y="102" width="52" height="150" rx="20" ${BODY}/><rect x="222" y="245" width="18" height="135" rx="8" ${BODY}/><rect x="240" y="245" width="18" height="135" rx="8" ${BODY}/><circle cx="262" cy="132" r="16" fill="#ffc4ad" stroke="#d99a85" stroke-width="2"/><circle cx="262" cy="132" r="4" fill="#d99a85"/>${['側面觀','手臂外展 90°','（上臂朝向觀看者）','手肘屈曲 90°','起始：前臂朝前','檢查者固定','手肘與肩胛','可採站姿或坐姿'].map((t,n)=>txt(22,30+n*18,t,'fill="#7a7196" font-size="12"'+(n===0?' font-weight="700"':''))).join('')}`}),
+ supine:()=>({p:[250,252],len:175,w:24,bg:supineBase()}),
+ prone:()=>({p:[250,252],len:175,w:24,bg:supineBase(true)+txt(40,48,'俯臥','fill="#7a7196" font-size="12"')}),
+ hipTop:()=>({p:[215,228],len:160,w:24,bg:`<rect x="150" y="10" width="180" height="385" rx="10" fill="#d9f3ff" stroke="#9fcbe6"/>${headF(240,48,26)}<rect x="195" y="78" width="90" height="155" rx="22" ${BODY}/><line x1="265" y1="228" x2="292" y2="385" stroke="#9aa8b1" stroke-width="28" stroke-linecap="round"/><line x1="265" y1="228" x2="292" y2="385" stroke="#eef2f4" stroke-width="24" stroke-linecap="round"/><line x1="240" y1="20" x2="240" y2="395" stroke="#9aa8b1" stroke-dasharray="4 6"/>${txt(20,30,'仰臥，由上往下看','fill="#7a7196" font-size="12"')}${txt(20,48,'動作側：個案右腿','fill="#7a7196" font-size="12"')}${txt(246,392,'中線','fill="#9aa8b1" font-size="11"')}`}),
+ hipRot:()=>({p:[215,262],len:110,w:22,bg:`<rect x="150" y="10" width="180" height="385" rx="10" fill="#d9f3ff" stroke="#9fcbe6"/>${headF(240,48,26)}<rect x="195" y="78" width="90" height="155" rx="22" ${BODY}/><line x1="265" y1="228" x2="275" y2="385" stroke="#9aa8b1" stroke-width="28" stroke-linecap="round"/><line x1="265" y1="228" x2="275" y2="385" stroke="#eef2f4" stroke-width="24" stroke-linecap="round"/><line x1="215" y1="228" x2="215" y2="262" stroke="#d99a85" stroke-width="30" stroke-linecap="round"/><line x1="215" y1="228" x2="215" y2="262" stroke="#ffc4ad" stroke-width="26" stroke-linecap="round"/><circle cx="215" cy="262" r="14" fill="#ffc4ad" stroke="#d99a85" stroke-width="2"/><line x1="240" y1="20" x2="240" y2="395" stroke="#9aa8b1" stroke-dasharray="4 6"/>${txt(20,30,'仰臥，由上往下看','fill="#7a7196" font-size="12"')}${txt(20,48,'屈膝、屈髖各 90°','fill="#7a7196" font-size="12"')}${txt(20,66,'一手扶膝、一手握足踝','fill="#7a7196" font-size="12"')}${txt(246,392,'中線','fill="#9aa8b1" font-size="11"')}`})
+};
+const ROM={
+ shoulder:{note:'手臂外展 90°、手肘屈曲 90°，再做外旋與內旋動作（站姿或坐姿）。',rule:'1. 受測者操作時應保持身體直立、水平並維持中線。<br>2. 以<b>參照姿勢目測估計</b>角度（不需測量），結果分為<b>正常範圍（WNL）</b>或<b>活動受限（Limited）</b>；受限時需說明受限的動作。<br>3. 結果需說出：正常範圍或活動受限、<b>兩側是否對稱</b>、<b>有無疼痛</b>。',items:[
+  {k:'A',zh:'向前屈曲',en:'Forward flexion',lo:170,hi:180,v:'sideStand',d:t=>[S(t),C(t)],how:'手臂伸直、<b>拇指朝上</b>，從身體前方慢慢向上舉過頭。',ref:'手臂垂直、貼近耳朵'},
+  {k:'B',zh:'過度伸展',en:'Hyperextension',lo:40,hi:50,v:'sideStand',d:t=>[-S(t),C(t)],how:'手臂伸直置於身體旁，向身體後方抬起。',ref:'約直角的一半'},
+  {k:'C',zh:'外展',en:'Abduction',lo:170,hi:180,v:'frontStand',d:t=>[S(t),C(t)],how:'手臂伸直，由身體側方慢慢向外、向上舉。',ref:'雙臂上舉，手掌於頭頂相碰'},
+  {k:'D',zh:'內收',en:'Adduction',lo:40,hi:50,v:'frontStand',d:t=>[-S(t),C(t)],how:'手臂伸直，由身體<b>前方越過中線</b>移向對側（手朝另一側）。',ref:'手臂越過身體中線'},
+  {k:'E',zh:'水平伸展',en:'Horizontal extension',lo:40,hi:50,v:'topShoulder',d:t=>[C(t),S(t)],how:'肩關節外展約 90°、手臂伸直，將手臂在水平面向身體後方移動。',ref:'約直角的一半'},
+  {k:'F',zh:'水平屈曲',en:'Horizontal flexion',lo:120,hi:130,v:'topShoulder',d:t=>[C(t),-S(t)],how:'肩關節外展約 90°、手臂伸直，將手臂在胸前水平移向對側。',ref:'手臂越過胸前中線'},
+  {k:'G',zh:'外旋轉',en:'External rotation',lo:80,hi:90,v:'sideRot',d:t=>[C(t),-S(t)],how:'個案採<b>站姿或坐姿</b>，肩關節外展 90°、手肘彎曲 90°；檢查者<b>固定手肘與肩胛</b>，將前臂<b>向頭側或後方</b>轉動。',ref:'前臂由水平轉至垂直向上'},
+  {k:'H',zh:'內旋轉',en:'Internal rotation',lo:80,hi:90,v:'sideRot',d:t=>[C(t),S(t)],how:'站／坐姿維持肩關節外展 90°、手肘彎曲 90°；檢查者<b>固定手肘與肩胛</b>，將前臂<b>向腳側或前方</b>轉動。',ref:'前臂由水平轉至垂直向下'}]},
+ hip:{note:'仰臥，髖、膝關節屈曲 90°，檢查者一手扶膝固定大腿、一手握住足踝，再做外旋與內旋動作。',rule:'1. 髖關節保持貼著床面，雙腳可以微微打開與肩同寬。<br>2. 以<b>參照姿勢目測估計</b>角度（不需測量），結果分為<b>正常範圍（WNL）</b>或<b>活動受限（Limited）</b>。<br>3. 結果需說出：正常範圍或活動受限、<b>兩側是否對稱</b>、<b>有無疼痛</b>。',items:[
+  {k:'A',zh:'屈曲（膝打直）',both:1,en:'Flexion',lo:85,hi:90,v:'supine',d:t=>[C(t),-S(t)],how:'仰臥，<b>先做膝打直</b>：膝關節伸直、腳尖朝上，將整條腿向上抬起，<b>膝蓋不能彎曲</b>；另一側腿保持平放。',ref:'腿與床面垂直'},
+  {k:'A',zh:'屈曲（膝彎曲）',both:1,en:'Flexion',lo:110,hi:120,v:'supine',d:t=>[C(t),-S(t)],knee:true,how:'<b>再做膝彎</b>：請個案彎曲髖、膝關節，將膝蓋朝胸前抬起；另一側腿保持平放，避免骨盆後傾或腰部明顯拱起。',ref:'膝蓋接近胸部'},
+  {k:'B',zh:'過度伸展',en:'Hyperextension',lo:10,hi:20,v:'prone',d:t=>[C(t),-S(t)],how:'請個案<b>俯臥</b>，膝關節伸直，將大腿向上抬離床面。',ref:'大腿稍抬離床面'},
+  {k:'C',zh:'外展',en:'Abduction',lo:30,hi:45,v:'hipTop',d:t=>[-S(t),C(t)],how:'仰臥，膝關節伸直、<b>腳尖朝上</b>，將腿沿床面向外側滑開。',ref:'約直角的一半'},
+  {k:'D',zh:'內收',en:'Adduction',lo:20,hi:30,v:'hipTop',d:t=>[S(t),C(t)],how:'仰臥，膝關節伸直，<b>先將腿稍向外側</b>，再沿床面向內移，朝身體中線或對側移動。',pre:20,ref:'越過中線至對側腿上方'},
+  {k:'E',zh:'外旋轉',en:'External rotation',lo:40,hi:50,v:'hipRot',d:t=>[S(t),C(t)],how:'仰臥，髖、膝關節屈曲 90°，檢查者<b>一手扶膝固定大腿、一手握住足踝</b>；將<b>足部往身體中線方向</b>移動，使髖關節外旋。',ref:'約直角的一半'},
+  {k:'F',zh:'內旋轉',en:'Internal rotation',lo:30,hi:40,v:'hipRot',d:t=>[-S(t),C(t)],how:'維持上述姿勢，將<b>足部往外側</b>移動，使髖關節內旋。',ref:'略小於直角的一半'}]}
+};
+const romSel={shoulder:0,hip:0},romAng={shoulder:0,hip:0};
+function buildROM(key){const c=key==='shoulder'?$('cSh'):$('cHip'),D=ROM[key];
+ c.innerHTML=`<div class="pills">${D.items.map((m,i)=>`<button class="pill" onclick="selROM('${key}',${i})">${m.k}. ${m.zh}</button>`).join('')}</div>
+ <div id="${key}Info"></div>
+ <div class="row"><span class="big" id="${key}Deg">0°</span><button class="btn" onclick="playROM('${key}')">▶ 播放</button><span id="${key}Ok" class="tag"></span></div>
+ <input type="range" min="0" max="180" value="0" id="${key}Rng" oninput="stopRaf('${key}');drawROM('${key}',+this.value)">
+ <p class="sub" style="margin:2px 0 8px">可拖曳滑桿，練習目測判斷「正常範圍（WNL）」或「活動受限（Limited）」。</p>
+ <div class="say"><b>評分重點：</b><br>${D.rule}<br><b>旋轉：</b>${D.note}</div>`;selROM(key,0)}
+function selROM(key,i){romSel[key]=i;const c=key==='shoulder'?$('cSh'):$('cHip'),m=ROM[key].items[i];
+ [...c.querySelector('.pills').children].forEach((b,j)=>b.classList.toggle('on',j===i));
+ $(key+'Info').innerHTML=`<h3 style="margin:4px 0">${m.k}. ${m.zh} <span style="font-weight:400;color:#7a7196">${m.en}</span> <span class="tag">2 分</span></h3><p style="margin:4px 0"><b>操作：</b>${m.how}</p><p style="margin:4px 0"><b>參照姿勢：</b><span style="color:#ff6b8a;font-weight:700">${m.ref}</span></p><p style="margin:4px 0"><b>正常參考角度（目測估計）：</b>${m.both?`<span style="color:#21b37a;font-weight:700">膝打直 85–90°；膝彎 110–120°</span>（目前示範：${m.zh.replace(/.*（|）/g,'')}）`:`<span style="color:#21b37a;font-weight:700">${m.lo}–${m.hi}°</span>`}</p><div class="say" style="margin-top:6px"><b>口述：</b>「這是${key==='shoulder'?'肩':'髖'}關節的${m.zh.replace(/（.*/,'')}（${m.en}）${m.both?'，'+m.zh.replace(/.*（|）/g,''):''}。」→ 動作到達「${m.ref}」<br>→「兩側皆在<b>正常範圍（WNL）</b>，兩側對稱，活動時無疼痛。」<br><span style="color:#7a7196">若受限：「右側${m.zh.replace(/（.*/,'')}<b>活動受限（Limited）</b>，未達${m.ref}，兩側不對稱，活動時有疼痛。」</span></div></div>`;
+ $(key+'Rng').max=Math.max(m.hi+15,30);$(key+'Rng').value=0;drawROM(key,0);setTimeout(()=>playROM(key),250)}
+function polar(p,d,r){return [p[0]+d[0]*r,p[1]+d[1]*r]}
+function drawROM(key,ang){const m=ROM[key].items[romSel[key]],V=views[m.v](),p=V.p,sv=key==='shoulder'?$('svSh'):$('svHip');romAng[key]=ang;
+ let band='';const pts=[];for(let t=m.lo;t<=m.hi;t+=1)pts.push(polar(p,m.d(t),V.len+18));for(let t=m.hi;t>=m.lo;t-=1)pts.push(polar(p,m.d(t),38));
+ band=`<path d="M${pts.map(q=>q.join(' ')).join(' L')}Z" fill="rgba(33,179,122,.28)" stroke="rgba(33,179,122,.6)"/>`;
+ const ghost=polar(p,m.d(m.hi),V.len);const z=polar(p,m.d(0),V.len+10);
+ let arc='';if(ang>0.5){const ap=[];for(let t=0;t<=ang;t+=1)ap.push(polar(p,m.d(t),52));ap.push(polar(p,m.d(ang),52));arc=`<path d="M${ap.map(q=>q.join(' ')).join(' L')}" fill="none" stroke="#3d8bff" stroke-width="3.5"/>`}
+ let limb='';
+ if(m.knee){const k=Math.min(1,ang/90)*125,th=95,sh=90;const kx=p[0]+th*C(ang),ky=p[1]-th*S(ang);const sa=-ang+k;const fx=kx+sh*C(sa),fy=ky+sh*S(sa);
+  limb=`<polyline points="${p[0]},${p[1]} ${kx},${ky} ${fx},${fy}" fill="none" stroke="#d99a85" stroke-width="${V.w+4}" stroke-linecap="round" stroke-linejoin="round"/><polyline points="${p[0]},${p[1]} ${kx},${ky} ${fx},${fy}" fill="none" stroke="#ffc4ad" stroke-width="${V.w}" stroke-linecap="round" stroke-linejoin="round"/>`}
+ else{const e=polar(p,m.d(ang),V.len);const hd=polar(p,m.d(ang),V.len+14);
+  limb=`<line x1="${p[0]}" y1="${p[1]}" x2="${e[0]}" y2="${e[1]}" stroke="#d99a85" stroke-width="${V.w+4}" stroke-linecap="round"/><line x1="${p[0]}" y1="${p[1]}" x2="${e[0]}" y2="${e[1]}" stroke="#ffc4ad" stroke-width="${V.w}" stroke-linecap="round"/><circle cx="${hd[0]}" cy="${hd[1]}" r="${V.w*0.6}" fill="#ffc4ad" stroke="#d99a85" stroke-width="2"/>`}
+ const lab=polar(p,m.d(Math.max(ang/2,4)),70);
+ const inR=ang>=m.lo-15&&ang<=m.hi+15;
+ sv.innerHTML=V.bg+band+`<line x1="${p[0]}" y1="${p[1]}" x2="${z[0]}" y2="${z[1]}" stroke="#9aa8b1" stroke-width="2" stroke-dasharray="6 5"/><line x1="${p[0]}" y1="${p[1]}" x2="${ghost[0]}" y2="${ghost[1]}" stroke="#21b37a" stroke-width="2" stroke-dasharray="3 4"/>`+arc+limb+`<circle cx="${p[0]}" cy="${p[1]}" r="5" fill="#3b3355"/>`+
+  (ang>3?`<text x="${lab[0]}" y="${lab[1]+5}" text-anchor="middle" font-size="15" font-weight="700" fill="#3d8bff" stroke="#fff" stroke-width="4" paint-order="stroke">${Math.round(ang)}°</text>`:'')+
+  txt(20,388,`參照：${m.ref}`,'font-weight="700" fill="#ff6b8a" font-size="14" stroke="#fff" stroke-width="4" paint-order="stroke"')+txt(460,366,m.both?`A. 屈曲：膝打直 85–90°｜膝彎 110–120°`:`${m.k}. ${m.zh}  正常 ${m.lo}–${m.hi}°`,'text-anchor="end" font-weight="700" fill="#21b37a" font-size="14" stroke="#fff" stroke-width="4" paint-order="stroke"');
+ $(key+'Deg').textContent=Math.max(0,Math.round(ang))+'°';$(key+'Rng').value=ang;
+ const ok=$(key+'Ok');if(ang>=m.lo-15){ok.textContent='✓ 正常範圍 WNL';ok.className='tag'}else if(ang>3){ok.textContent='未達參照 → 活動受限 Limited';ok.className='tag c'}else{ok.textContent='';ok.className=''}}
+function playROM(key){const m=ROM[key].items[romSel[key]],T=m.hi,P=m.pre||0;
+ anim(key,2600+P*12,p=>drawROM(key,-P+ease(p)*(T+P)),()=>setTimeout(()=>{if(!raf[key])anim(key,1400,p=>drawROM(key,T*(1-ease(p))))},1100))}
+
+/* ---------- QUIZ ---------- */
+const QZ=[
+ ['上肢長度的測量位置是？',['肩峰頂端 → 中指指尖','肩峰頂端 → 腕關節','鎖骨中點 → 中指指尖','腋下 → 中指指尖'],0,'上肢：肩峰頂端到中指指尖，兩邊相差 < 1 公分為正常。'],
+ ['下肢長度的測量位置是？',['臍 → 內踝','髂骨前上棘下緣 → 內踝','大轉子 → 外踝','髂骨前上棘 → 外踝'],1,'下肢：髂骨前上棘下緣到內脛骨踝。'],
+ ['大腿肌肉大小（周徑）在哪裡量？',['髕骨中點向上 10 公分','髕骨中點向上 20 公分','髕骨中點向下 10 公分','腹股溝下 5 公分'],1,'大腿：髕骨中點向上 20 公分；小腿：向下 10 公分。'],
+ ['兩側肌肉周徑差多少屬於可接受？',['< 0.5 公分','1–3 公分，慣用手可能稍大','3–5 公分','完全不能有差異'],1,'兩側差 1–3 公分，慣用手可能稍大。'],
+ ['肌力「3 分」的意義是？',['些微肌肉收縮','無重力影響下可完成 ROM','可對抗重力，但無法抵抗外力','可對抗重力且部分抵抗外力'],2,'3：可對抗重力（如可將手自下垂狀態提起）。'],
+ ['肱三頭肌肌力測試，受檢者應？',['彎曲肘關節對抗向外拉力','伸直肘關節對抗向內推力','腿部上舉抵抗下壓','握拳對抗'],1,'三頭肌：伸直肘關節，對抗檢查者向內的推力。'],
+ ['關節觸診的範圍與方向？',['中心向外 2–3 公分，由內往外','中心向外 5–7 公分範圍，由外往中心','只摸關節中心','中心向外 10 公分，由內往外'],1,'以指腹輕觸，從中心向外 5–7 公分範圍，由外往中心觸診。'],
+ ['脊柱三個弧線正確的是？',['頸凸、胸凹、腰凸','頸凹、胸凸、腰凹','頸凹、胸凹、腰凸','皆為凸面'],1,'頸部凹面、胸部凸面、腰部凹面。'],
+ ['評估脊柱側彎時應指示病人？',['仰臥','身體往前彎腰','雙手上舉','單腳站立'],1,'指示病人身體往前彎腰，觀察兩側背部是否等高。'],
+ ['肩關節外展的正常最大活動角度？',['90–100°','120–130°','170–180°','40–50°'],2,'外展 170–180°；內收 40–50°。'],
+ ['髖關節屈曲（膝彎曲）的正常角度？',['85–90°','110–120°','30–45°','10–20°'],1,'膝打直 85–90°，膝彎曲 110–120°。'],
+ ['髖關節內旋轉的正常最大活動角度？',['40–50°','30–40°','80–90°','20–30°'],1,'髖外旋 40–50°、內旋 30–40°。'],
+ ['關節活動度（ROM）評估的正確做法是？',['直接由檢查者推動肢體到最大角度','先請個案自行做（AROM），受限再支托協助（PROM），疼痛或阻力即停止','一定要用量角器測量才計分','有疼痛時鼓勵個案再多做一點'],1,'先 AROM，受限再 PROM（考試口述即可）；疼痛或阻力即停止；以目測評估。'],
+ ['ROM 評估結果需說出哪些內容？',['只要說出角度數字','正常範圍（WNL）或活動受限（Limited）、兩側是否對稱、有無疼痛','只說有無疼痛','肌力分數'],1,'結果需說出：正常範圍或活動受限、兩側是否對稱、有無疼痛。'],
+ ['肩關節向前屈曲的參照姿勢是？',['手臂與地面平行','手臂垂直、貼近耳朵','手臂越過身體中線','約直角的一半'],1,'向前屈曲參照：手臂垂直、貼近耳朵（約 170–180°）。'],
+ ['檢查時沒有測試同一部位的兩側，會怎樣？',['扣 1 分','此項不予計分','不影響','扣 0.5 分'],1,'未能測試兩側之項目，此項不予以計分。']
+];
+let qDone=0,qOk=0;
+function buildQuiz(){qDone=0;qOk=0;const order=QZ.map((_,i)=>i).sort(()=>Math.random()-.5);
+ $('quizBox').innerHTML=order.map((qi,n)=>{const q=QZ[qi];return `<div class="q" id="q${n}"><b>${n+1}. ${q[0]}</b>${q[1].map((o,j)=>`<button class="opt" onclick="ans(${n},${qi},${j},this)">${o}</button>`).join('')}<div class="exp">${q[3]}</div></div>`}).join('');qScore()}
+function ans(n,qi,j,b){const box=$('q'+n);if(box.dataset.d)return;box.dataset.d=1;qDone++;const ok=j===QZ[qi][2];if(ok){qOk++;confetti(18)}if(qDone===QZ.length&&qOk===QZ.length)setTimeout(()=>confetti(80),300);
+ const os=box.querySelectorAll('.opt');os[QZ[qi][2]].classList.add('ok');if(!ok)b.classList.add('no');box.querySelector('.exp').style.display='block';qScore()}
+function qScore(){$('quizScore').textContent=`答對 ${qOk} / 已作答 ${qDone}（共 ${QZ.length} 題）`}
+
+function confetti(n=40){const cs=['#ff9ec0','#b69cff','#7fd4ff','#ffd166','#7ee0b5','#ff6b8a'];for(let i=0;i<n;i++){const d=document.createElement('div');d.className='confetti';d.style.left=Math.random()*100+'vw';d.style.background=cs[i%cs.length];d.style.animationDelay=Math.random()*.4+'s';d.style.animationDuration=1.2+Math.random()*.9+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),2600)}}
+/* ---------- INIT ---------- */
+buildPrep();buildMuscle();buildMeasure();buildStrength();buildJoint();buildSpine();buildROM('shoulder');buildROM('hip');buildQuiz();route();
+</script>
+</body>
+</html>
